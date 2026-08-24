@@ -141,6 +141,75 @@
     });
   }
 
+  /* ---- Trending-rail auto-scroll (JS-driven, so arrows can share the same
+     native scrollLeft instead of fighting a CSS transform animation).
+     Content is duplicated x2 in the markup for a seamless loop: once we've
+     scrolled past the first copy, snap back by exactly half the width. ---- */
+  function mountRailAutoScroll() {
+    document.querySelectorAll(".rail").forEach(function (rail) {
+      var paused = false;
+      var resumeTimer = null;
+      var speed = 0.5; // px per frame
+
+      rail.addEventListener("mouseenter", function () { paused = true; });
+      rail.addEventListener("mouseleave", function () { paused = false; });
+      rail.addEventListener("manualscroll", function () {
+        paused = true;
+        clearTimeout(resumeTimer);
+        resumeTimer = setTimeout(function () { paused = false; }, 2500);
+      });
+
+      if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+      function tick() {
+        if (!paused) {
+          rail.scrollLeft += speed;
+          var half = rail.scrollWidth / 2;
+          if (half > 0 && rail.scrollLeft >= half) rail.scrollLeft -= half;
+        }
+        requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    });
+  }
+
+  /* ---- Manual arrow controls, shared by the trending rail and every
+     watch-order path. Each [.scroll-region] wraps one scrollable track
+     (.rail or .path-track) plus two [.scroll-arrow] buttons. ---- */
+  function mountScrollArrows() {
+    document.querySelectorAll(".scroll-region").forEach(function (region) {
+      var track = region.querySelector(".rail, .path-track");
+      var prev = region.querySelector(".scroll-arrow.prev");
+      var next = region.querySelector(".scroll-arrow.next");
+      if (!track || !prev || !next) return;
+      var isRail = track.classList.contains("rail");
+
+      function stepSize() {
+        var child = track.querySelector(".card, .node");
+        var w = child ? child.getBoundingClientRect().width : 220;
+        return Math.round(w * 2 + 40);
+      }
+      function go(dir) {
+        track.scrollBy({ left: dir * stepSize(), behavior: "smooth" });
+        track.dispatchEvent(new CustomEvent("manualscroll"));
+      }
+      prev.addEventListener("click", function () { go(-1); });
+      next.addEventListener("click", function () { go(1); });
+
+      if (!isRail) {
+        function updateArrows() {
+          var max = track.scrollWidth - track.clientWidth;
+          if (max <= 4) { prev.setAttribute("disabled", ""); next.setAttribute("disabled", ""); return; }
+          if (track.scrollLeft <= 4) prev.setAttribute("disabled", ""); else prev.removeAttribute("disabled");
+          if (track.scrollLeft >= max - 4) next.setAttribute("disabled", ""); else next.removeAttribute("disabled");
+        }
+        track.addEventListener("scroll", updateArrows, { passive: true });
+        window.addEventListener("resize", updateArrows);
+        updateArrows();
+      }
+    });
+  }
+
   ready(function () {
     mountNavToggle();
     mountNavActive();
@@ -149,6 +218,8 @@
     mountReveal();
     mountHideToggle();
     mountOrderSwitch();
+    mountRailAutoScroll();
+    mountScrollArrows();
     var yearEl = document.getElementById("year");
     if (yearEl) yearEl.textContent = new Date().getFullYear();
   });
