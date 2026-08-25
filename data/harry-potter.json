@@ -1,0 +1,74 @@
+{
+   "entries" : [
+      {
+         "title" : "Philosopher's Stone",
+         "filler" : false,
+         "meta" : "2001",
+         "rating" : 7.9,
+         "poster" : "https://image.tmdb.org/t/p/w500/wuMc08IPKEatf9rnMNXvIDxqP4W.jpg",
+         "position" : 1
+      },
+      {
+         "meta" : "2002",
+         "filler" : false,
+         "title" : "Chamber of Secrets",
+         "position" : 2,
+         "poster" : "https://image.tmdb.org/t/p/w500/sdEOH0992YZ0QSxgXNIGLq1ToUi.jpg",
+         "rating" : 7.7
+      },
+      {
+         "filler" : false,
+         "meta" : "2004",
+         "title" : "Prisoner of Azkaban",
+         "poster" : "https://image.tmdb.org/t/p/w500/aWxwnYoe8p2d2fcxOqtvAtJ72Rw.jpg",
+         "position" : 3,
+         "rating" : 8
+      },
+      {
+         "rating" : 7.8,
+         "position" : 4,
+         "poster" : "https://image.tmdb.org/t/p/w500/fECBtHlr0RB3foNHDiCBXeg9Bv9.jpg",
+         "filler" : false,
+         "meta" : "2005",
+         "title" : "Goblet of Fire"
+      },
+      {
+         "rating" : 7.7,
+         "position" : 5,
+         "poster" : "https://image.tmdb.org/t/p/w500/5aOyriWkPec0zUDxmHFP9qMmBaj.jpg",
+         "meta" : "2007",
+         "filler" : false,
+         "title" : "Order of the Phoenix"
+      },
+      {
+         "rating" : 7.7,
+         "position" : 6,
+         "poster" : "https://image.tmdb.org/t/p/w500/z7uo9zmQdQwU5ZJHFpv2Upl30i1.jpg",
+         "title" : "Half-Blood Prince",
+         "filler" : false,
+         "meta" : "2009"
+      },
+      {
+         "poster" : "https://image.tmdb.org/t/p/w500/iGoXIpQb7Pot00EEdwpwPajheZ5.jpg",
+         "position" : 7,
+         "rating" : 7.7,
+         "title" : "Deathly Hallows: Part 1",
+         "filler" : false,
+         "meta" : "2010"
+      },
+      {
+         "filler" : false,
+         "title" : "Deathly Hallows: Part 2",
+         "meta" : "2011",
+         "poster" : "https://image.tmdb.org/t/p/w500/c54HpQmuwXjHq2C9wmoACjxoom3.jpg",
+         "position" : 8,
+         "rating" : 8.1
+      }
+   ],
+   "source" : "ReelPath (https://reelpath.pages.dev)",
+   "slug" : "harry-potter",
+   "license" : "CC-BY-4.0 -- attribution appreciated, corrections and additions welcome via PR",
+   "guideUrl" : "https://reelpath.pages.dev/watch-order/harry-potter.html",
+   "franchise" : "Harry Potter",
+   "entryCount" : 8
+}

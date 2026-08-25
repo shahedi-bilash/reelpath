@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script>(function(){try{if(localStorage.getItem("reelpath-theme")==="light"){document.documentElement.setAttribute("data-theme","light");}}catch(e){}})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MCU Watch Order: Release vs. Chronological | ReelPath</title>
 <meta name="description" content="All 34 MCU films plus the 9 Disney+ series that now matter to the story, switchable between release order and in-universe chronological order.">
@@ -25,7 +26,8 @@
 <header class="nav">
   <div class="nav-inner">
     <a class="logo" href="../index.html"><img src="../assets/icons/logo.png" alt="ReelPath logo" width="40" height="40">Reel<span>Path</span></a>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="navLinks" aria-label="Menu">â°</button>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle light/dark theme" aria-pressed="false"><span class="theme-toggle-thumb"></span></button>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="navLinks" aria-label="Menu">☰</button>
     <nav class="nav-links" id="navLinks">
       <a href="index.html">Watch Order</a>
       <a href="../best/index.html">Best Of</a>
@@ -40,7 +42,7 @@
   <section class="hero hero--compact" style="--hero-img:url('https://image.tmdb.org/t/p/w1280/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg');">
     <div class="hero-content">
       <p class="breadcrumb"><a href="../index.html">Home</a><span>/</span><a href="index.html">Watch Order</a><span>/</span>MCU</p>
-      <span class="eyebrow">Franchise Â· Release â Chronological</span>
+      <span class="eyebrow">Franchise · Release ↔ Chronological</span>
       <h1>MCU watch order</h1>
       <p>34 films, 9 key Disney+ series, two completely different viewing experiences. Series are marked so you always know what's a film and what isn't — some newer films genuinely assume you've watched the show that came before them. Switch orders below.</p>
     </div>
@@ -59,7 +61,7 @@
         </div>
       </div>
       <div class="scroll-region">
-        <button class="scroll-arrow prev" type="button" aria-label="Scroll left">â¹</button>
+        <button class="scroll-arrow prev" type="button" aria-label="Scroll left">‹</button>
       <div class="path-track">
         <div class="path-nodes" id="pathNodes">
           <div class="path-line"></div>
@@ -113,9 +115,16 @@
 
         </div>
       </div>
-        <button class="scroll-arrow next" type="button" aria-label="Scroll right">âº</button>
+        <button class="scroll-arrow next" type="button" aria-label="Scroll right">›</button>
       </div>
       <p class="path-footnote">Chronological placements follow the most commonly cited in-universe timeline — a few entries (Eternals, Deadpool &amp; Wolverine) span huge time ranges and are placed by their main present-day setting. Series are slotted in at their most clearly documented tie-in points (WandaVision before Doctor Strange in the Multiverse of Madness; Echo before Daredevil: Born Again; Daredevil: Born Again before Thunderbolts*) and by release proximity elsewhere. Titles released after this guide was written won't appear until we update it.</p>
+      <div class="embed-widget">
+        <button type="button" class="btn-small" data-embed-slug="mcu">Embed this guide ⤢</button>
+        <div class="embed-code-box" id="embedCodeBox" hidden>
+          <textarea readonly id="embedCodeText" rows="3">&lt;iframe src="https://reelpath.pages.dev/embed/mcu.html" width="100%" height="230" style="border:0;border-radius:12px;" loading="lazy" title="MCU watch order — ReelPath"&gt;&lt;/iframe&gt;</textarea>
+          <button type="button" class="btn-small" id="embedCopyBtn">Copy code</button>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -137,7 +146,7 @@
           <div class="entry-detail-img-wrap"><img class="entry-detail-img" src="https://image.tmdb.org/t/p/w500/gKzYx79y0AQTL4UAk1cBQJ3nvrm.jpg" alt="The Incredible Hulk" loading="lazy" width="140" height="210"><span class="rating-badge">6.3</span></div>
           <div class="entry-detail-body">
             <div class="entry-detail-top"><span class="node-type-badge">FILM</span><span class="entry-detail-title">The Incredible Hulk</span><span class="entry-detail-meta">2008</span><span class="entry-detail-tag">Phase 1</span></div>
-            <p class="entry-detail-desc">Bruce Banner runs from the general hunting his condition â the MCU's most-skipped entry, though Ross's arc pays off later.</p>
+            <p class="entry-detail-desc">Bruce Banner runs from the general hunting his condition — the MCU's most-skipped entry, though Ross's arc pays off later.</p>
             <div class="entry-detail-action"><a href="#" class="btn-small" aria-disabled="true" title="Affiliate link — coming soon">Where to watch →</a></div>
           </div>
         </div>
@@ -185,7 +194,7 @@
           <div class="entry-detail-img-wrap"><img class="entry-detail-img" src="https://image.tmdb.org/t/p/w500/wp6OxE4poJ4G7c0U2ZIXasTSMR7.jpg" alt="Thor: The Dark World" loading="lazy" width="140" height="210"><span class="rating-badge">6.5</span></div>
           <div class="entry-detail-body">
             <div class="entry-detail-top"><span class="node-type-badge">FILM</span><span class="entry-detail-title">Thor: The Dark World</span><span class="entry-detail-meta">2013</span><span class="entry-detail-tag">Phase 2</span></div>
-            <p class="entry-detail-desc">Ancient Dark Elves return for a weapon that predates the universe â the MCU's shakiest entry, skip-friendly.</p>
+            <p class="entry-detail-desc">Ancient Dark Elves return for a weapon that predates the universe — the MCU's shakiest entry, skip-friendly.</p>
             <div class="entry-detail-action"><a href="#" class="btn-small" aria-disabled="true" title="Affiliate link — coming soon">Where to watch →</a></div>
           </div>
         </div>
@@ -193,7 +202,7 @@
           <div class="entry-detail-img-wrap"><img class="entry-detail-img" src="https://image.tmdb.org/t/p/w500/tVFRpFw3xTedgPGqxW0AOI8Qhh0.jpg" alt="Captain America: The Winter Soldier" loading="lazy" width="140" height="210"><span class="rating-badge">7.7</span></div>
           <div class="entry-detail-body">
             <div class="entry-detail-top"><span class="node-type-badge">FILM</span><span class="entry-detail-title">Captain America: The Winter Soldier</span><span class="entry-detail-meta">2014</span><span class="entry-detail-tag">Phase 2</span></div>
-            <p class="entry-detail-desc">Cap discovers Hydra rotted S.H.I.E.L.D. from the inside â the series' best paranoid-thriller turn.</p>
+            <p class="entry-detail-desc">Cap discovers Hydra rotted S.H.I.E.L.D. from the inside — the series' best paranoid-thriller turn.</p>
             <div class="entry-detail-action"><a href="#" class="btn-small" aria-disabled="true" title="Affiliate link — coming soon">Where to watch →</a></div>
           </div>
         </div>
@@ -509,11 +518,11 @@
   <section class="section section--tight">
     <div class="wrap prose">
       <h2>Which order should you actually pick?</h2>
-      <p>First time through? Go release order â it's how the surprises (the first team-up, the Thanos reveal, the snap) were designed to land, and it matches every "MCU in order" list you'll find elsewhere. Rewatching, or want the timeline to make sense on its own terms? Chronological order removes the flash-forwards and flashbacks and just tells the story start to finish.</p>
+      <p>First time through? Go release order — it's how the surprises (the first team-up, the Thanos reveal, the snap) were designed to land, and it matches every "MCU in order" list you'll find elsewhere. Rewatching, or want the timeline to make sense on its own terms? Chronological order removes the flash-forwards and flashbacks and just tells the story start to finish.</p>
       <h2>Do I need to watch the Disney+ shows too?</h2>
       <p>For the earlier films, no — <em>WandaVision</em>, <em>Loki</em> and <em>Hawkeye</em> add context but skipping them won't leave you lost. That changes for the newest wave: <em>Daredevil: Born Again</em> leans on <em>Echo</em>, and <em>Thunderbolts*</em> leans on <em>Daredevil: Born Again</em>. Series nodes are badged SERIES right on the path so you can decide what to skip with your eyes open.</p>
       <h2>Where to watch</h2>
-      <p>Most MCU films stream on Disney+; a few are still exclusive to digital purchase/rental depending on your region. <a href="#" class="btn-small" aria-disabled="true" title="Affiliate link â coming soon">Check availability â</a></p>
+      <p>Most MCU films stream on Disney+; a few are still exclusive to digital purchase/rental depending on your region. <a href="#" class="btn-small" aria-disabled="true" title="Affiliate link — coming soon">Check availability →</a></p>
     </div>
   </section>
 
@@ -525,7 +534,7 @@
       <div class="hub-grid hub-grid--3">
         <a class="hub-card hub-card--media reveal" href="one-piece.html">
           <img class="hub-card-img" src="https://image.tmdb.org/t/p/w500/dB4EDhre2dsC2kxYDavyKWqLQwi.jpg" alt="One Piece poster" loading="lazy"><span class="rating-badge">8.8</span>
-          <div class="hub-card-body"><span class="hub-card-tag">Anime Â· Flagship</span><h3>One Piece</h3><p>1,000+ episodes with a live skip-filler toggle.</p></div>
+          <div class="hub-card-body"><span class="hub-card-tag">Anime · Flagship</span><h3>One Piece</h3><p>1,000+ episodes with a live skip-filler toggle.</p></div>
         </a>
         <a class="hub-card hub-card--media reveal" href="fate.html">
           <img class="hub-card-img" src="https://image.tmdb.org/t/p/w500/chUbHBiMX7buj8TzOEIjHHPCJfF.jpg" alt="Fate Series poster" loading="lazy"><span class="rating-badge">8.0</span>
@@ -558,12 +567,13 @@
           <h4>About</h4>
           <a href="../about.html">About ReelPath</a>
           <a href="../about.html#credits">Credits &amp; sources</a>
+          <a href="../about.html#data-license">Open data</a>
         </div>
       </div>
     </div>
     <div class="footer-note">
-      <span>Some links on this site are affiliate links â we may earn a commission at no extra cost to you.</span>
-      <span>Â© <span id="year">2026</span> Â· <a href="mailto:shahedibilash2@gmail.com" style="border-bottom:1px solid var(--line-strong);">Shahedi Bilash</a> Â· REELPATH</span>
+      <span>Some links on this site are affiliate links — we may earn a commission at no extra cost to you.</span>
+      <span>© <span id="year">2026</span> · <a href="mailto:shahedibilash2@gmail.com" style="border-bottom:1px solid var(--line-strong);">Shahedi Bilash</a> · REELPATH</span>
     </div>
     <p class="footer-tmdb">This product uses the TMDB API but is not endorsed or certified by TMDB.</p>
   </div>

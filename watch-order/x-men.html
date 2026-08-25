@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script>(function(){try{if(localStorage.getItem("reelpath-theme")==="light"){document.documentElement.setAttribute("data-theme","light");}}catch(e){}})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>X-Men Watch Order: Release vs. Chronological | ReelPath</title>
 <meta name="description" content="All 13 Fox-era X-Men films, switchable between release order and the notoriously tangled in-universe chronological order.">
@@ -47,6 +48,7 @@
 <header class="nav">
   <div class="nav-inner">
     <a class="logo" href="../index.html"><img src="../assets/icons/logo.png" alt="ReelPath logo" width="40" height="40">Reel<span>Path</span></a>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle light/dark theme" aria-pressed="false"><span class="theme-toggle-thumb"></span></button>
     <button class="nav-toggle" aria-expanded="false" aria-controls="navLinks" aria-label="Menu">☰</button>
     <nav class="nav-links" id="navLinks">
       <a href="index.html">Watch Order</a>
@@ -103,6 +105,13 @@
         <button class="scroll-arrow next" type="button" aria-label="Scroll right">›</button>
       </div>
       <p class="path-footnote">Chronological placement follows the most commonly cited fan timeline, anchored to <em>X-Men: Days of Future Past</em>'s 2014 timeline merge. <em>Deadpool</em> and <em>Deadpool 2</em> are notoriously unstuck in time — the films themselves joke about it — and are placed here in their most commonly assumed near-present window rather than a confirmed year.</p>
+      <div class="embed-widget">
+        <button type="button" class="btn-small" data-embed-slug="x-men">Embed this guide ⤢</button>
+        <div class="embed-code-box" id="embedCodeBox" hidden>
+          <textarea readonly id="embedCodeText" rows="3">&lt;iframe src="https://reelpath.pages.dev/embed/x-men.html" width="100%" height="230" style="border:0;border-radius:12px;" loading="lazy" title="X-Men watch order — ReelPath"&gt;&lt;/iframe&gt;</textarea>
+          <button type="button" class="btn-small" id="embedCopyBtn">Copy code</button>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -272,6 +281,7 @@
           <h4>About</h4>
           <a href="../about.html">About ReelPath</a>
           <a href="../about.html#credits">Credits &amp; sources</a>
+          <a href="../about.html#data-license">Open data</a>
         </div>
       </div>
     </div>

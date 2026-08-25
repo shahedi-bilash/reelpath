@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script>(function(){try{if(localStorage.getItem("reelpath-theme")==="light"){document.documentElement.setAttribute("data-theme","light");}}catch(e){}})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Naruto Watch Order (With Skip-Filler Mode) | ReelPath</title>
 <meta name="description" content="The full Naruto and Naruto Shippuden watch order, arc by arc, with a live toggle to hide the two biggest filler stretches.">
@@ -42,6 +43,7 @@
 <header class="nav">
   <div class="nav-inner">
     <a class="logo" href="../index.html"><img src="../assets/icons/logo.png" alt="ReelPath logo" width="40" height="40">Reel<span>Path</span></a>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle light/dark theme" aria-pressed="false"><span class="theme-toggle-thumb"></span></button>
     <button class="nav-toggle" aria-expanded="false" aria-controls="navLinks" aria-label="Menu">☰</button>
     <nav class="nav-links" id="navLinks">
       <a href="index.html">Watch Order</a>
@@ -101,7 +103,14 @@
         <span><i class="legend-dot"></i> Canon arc</span>
         <span><i class="legend-dot faint"></i> Filler stretch — safe to skip</span>
       </div>
-      <p class="path-footnote">Episode numbers are approximate and shift slightly by region/streamer. This guide covers the two big, universally-cited filler blocks; Shippuden also has a handful of smaller scattered filler episodes within its canon stretches that aren't broken out individually here.</p>
+      <p class="path-footnote">Episode numbers are approximate and shift slightly by region/streamer. This guide covers the two big, universally-cited filler blocks; Shippuden also has a handful of smaller scattered filler episodes within its canon stretches that aren't broken out individually here. Just want the skip list? <a href="naruto/filler-list.html">See the filler list on its own page →</a></p>
+      <div class="embed-widget">
+        <button type="button" class="btn-small" data-embed-slug="naruto">Embed this guide ⤢</button>
+        <div class="embed-code-box" id="embedCodeBox" hidden>
+          <textarea readonly id="embedCodeText" rows="3">&lt;iframe src="https://reelpath.pages.dev/embed/naruto.html" width="100%" height="230" style="border:0;border-radius:12px;" loading="lazy" title="Naruto watch order — ReelPath"&gt;&lt;/iframe&gt;</textarea>
+          <button type="button" class="btn-small" id="embedCopyBtn">Copy code</button>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -247,6 +256,7 @@
           <h4>About</h4>
           <a href="../about.html">About ReelPath</a>
           <a href="../about.html#credits">Credits &amp; sources</a>
+          <a href="../about.html#data-license">Open data</a>
         </div>
       </div>
     </div>

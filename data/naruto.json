@@ -1,0 +1,80 @@
+{
+   "slug" : "naruto",
+   "guideUrl" : "https://reelpath.pages.dev/watch-order/naruto.html",
+   "license" : "CC-BY-4.0 -- attribution appreciated, corrections and additions welcome via PR",
+   "franchise" : "Naruto",
+   "entryCount" : 10,
+   "source" : "ReelPath (https://reelpath.pages.dev)",
+   "entries" : [
+      {
+         "poster" : "https://image.tmdb.org/t/p/w500/5F0HVEgkgP99fEWDjPyikGt9jQi.jpg",
+         "position" : 1,
+         "meta" : "Ep 1–19",
+         "filler" : false,
+         "title" : "Land of Waves"
+      },
+      {
+         "meta" : "Ep 20–67",
+         "filler" : false,
+         "title" : "Chunin Exams",
+         "poster" : "https://image.tmdb.org/t/p/w500/mpsYIytXhDXjI9yYC1Fp1S3PxsS.jpg",
+         "position" : 2
+      },
+      {
+         "position" : 3,
+         "poster" : "https://image.tmdb.org/t/p/w500/6sHC954QPhrrLsT6WPkSie9hVmI.jpg",
+         "meta" : "Ep 68–80",
+         "filler" : false,
+         "title" : "Konoha Crush"
+      },
+      {
+         "title" : "Search for Tsunade",
+         "filler" : false,
+         "meta" : "Ep 81–91",
+         "poster" : "https://image.tmdb.org/t/p/w500/xuJ0F9RfKvVSJNDg2usurQ9WvY5.jpg",
+         "position" : 4
+      },
+      {
+         "meta" : "Ep 92–107",
+         "filler" : true,
+         "title" : "Filler arcs",
+         "position" : 5,
+         "poster" : "https://image.tmdb.org/t/p/w500/koY8N9Y8IcLlb2eJXz50X1hFUL5.jpg"
+      },
+      {
+         "position" : 6,
+         "poster" : "https://image.tmdb.org/t/p/w500/xppeysfvDKVx775MFuH8Z9BlpMk.jpg",
+         "meta" : "Ep 108–135",
+         "filler" : false,
+         "title" : "Sasuke Retrieval"
+      },
+      {
+         "position" : 7,
+         "poster" : "https://image.tmdb.org/t/p/w500/z0YhJvomqedHF85bplUJEotkN5l.jpg",
+         "filler" : true,
+         "title" : "Filler saga",
+         "meta" : "Ep 136–220"
+      },
+      {
+         "filler" : false,
+         "title" : "Homecoming",
+         "meta" : "Shippuden Ep 1–32",
+         "poster" : "https://image.tmdb.org/t/p/w500/swFtS1S5556BFrQNJkwTTmyBFIT.jpg",
+         "position" : 8
+      },
+      {
+         "poster" : "https://image.tmdb.org/t/p/w500/nAeS7F2B22XQOLh5HVNXn8G3ZRk.jpg",
+         "position" : 9,
+         "meta" : "Shippuden Ep 163–175",
+         "filler" : false,
+         "title" : "Pain's Assault"
+      },
+      {
+         "meta" : "Shippuden Ep ~296–500",
+         "filler" : false,
+         "title" : "War & Finale",
+         "poster" : "https://image.tmdb.org/t/p/w500/deng9qeymn2LTdkXLMpMu68ILn0.jpg",
+         "position" : 10
+      }
+   ]
+}

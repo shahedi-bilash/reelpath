@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script>(function(){try{if(localStorage.getItem("reelpath-theme")==="light"){document.documentElement.setAttribute("data-theme","light");}}catch(e){}})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About ReelPath — Who's Behind It &amp; How It Works</title>
 <meta name="description" content="ReelPath is an independent, zero-cost side project by Shahedi Bilash. Here's who runs it, how the guides get made, and the affiliate disclosure.">
@@ -25,6 +26,7 @@
 <header class="nav">
   <div class="nav-inner">
     <a class="logo" href="index.html"><img src="assets/icons/logo.png" alt="ReelPath logo" width="40" height="40">Reel<span>Path</span></a>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle light/dark theme" aria-pressed="false"><span class="theme-toggle-thumb"></span></button>
     <button class="nav-toggle" aria-expanded="false" aria-controls="navLinks" aria-label="Menu">☰</button>
     <nav class="nav-links" id="navLinks">
       <a href="watch-order/index.html">Watch Order</a>
@@ -57,6 +59,9 @@
       <p>Genre picks reflect editorial judgment, not an algorithm or a sponsor. Nothing on this site is paid placement.</p>
       <p>Poster art and stills, once added, will come from <a href="https://www.themoviedb.org/" rel="noopener">The Movie Database (TMDB)</a>. This product uses the TMDB API but is not endorsed or certified by TMDB.</p>
 
+      <h2 id="data-license">Open data</h2>
+      <p>Every franchise guide's raw watch-order data — episode ranges, arc names, filler flags, positions — is published as clean JSON in <a href="https://github.com/shahedi-bilash/reelpath/tree/main/data" rel="noopener">the site's GitHub repo</a>, free to use for anything. Spot an error or want to add a franchise's data yourself? Corrections and additions are welcome as pull requests. <a href="https://github.com/shahedi-bilash/reelpath/tree/main/data" rel="noopener">Our data is open-source — contribute on GitHub →</a></p>
+
       <h2>Affiliate disclosure</h2>
       <p>Some "where to watch" links on this site are, or will become, affiliate links — ReelPath may earn a small commission if you use them, at no extra cost to you. That never affects which titles get recommended or how they're ranked.</p>
 
@@ -84,6 +89,7 @@
           <h4>About</h4>
           <a href="about.html">About ReelPath</a>
           <a href="about.html#credits">Credits &amp; sources</a>
+          <a href="about.html#data-license">Open data</a>
         </div>
       </div>
     </div>

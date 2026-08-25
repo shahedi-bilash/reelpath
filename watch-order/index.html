@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script>(function(){try{if(localStorage.getItem("reelpath-theme")==="light"){document.documentElement.setAttribute("data-theme","light");}}catch(e){}})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Watch Order Guides — Anime, Marvel, Horror &amp; More | ReelPath</title>
-<meta name="description" content="Interactive watch-order guides for 9 franchises: One Piece and Naruto with skip-filler mode, the MCU and Star Wars in release or chronological order, X-Men, Fast &amp; Furious, Demon Slayer, Fate and the Wan Universe.">
+<meta name="description" content="Interactive watch-order guides for 11 franchises: One Piece and Naruto with skip-filler mode, the MCU and Star Wars in release or chronological order, X-Men, Fast &amp; Furious, Demon Slayer, Attack on Titan, Harry Potter, Fate and the Wan Universe.">
 <link rel="canonical" href="https://reelpath.pages.dev/watch-order/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Watch Order Guides — Anime, Marvel, Horror &amp; More | ReelPath">
-<meta property="og:description" content="Interactive, spoiler-free watch-order guides for the 9 franchises that need one most.">
+<meta property="og:description" content="Interactive, spoiler-free watch-order guides for the 11 franchises that need one most.">
 <meta property="og:url" content="https://reelpath.pages.dev/watch-order/">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,6 +26,7 @@
 <header class="nav">
   <div class="nav-inner">
     <a class="logo" href="../index.html"><img src="../assets/icons/logo.png" alt="ReelPath logo" width="40" height="40">Reel<span>Path</span></a>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle light/dark theme" aria-pressed="false"><span class="theme-toggle-thumb"></span></button>
     <button class="nav-toggle" aria-expanded="false" aria-controls="navLinks" aria-label="Menu">☰</button>
     <nav class="nav-links" id="navLinks">
       <a href="index.html">Watch Order</a>
@@ -85,6 +87,14 @@
           <img class="hub-card-img" src="https://image.tmdb.org/t/p/w500/wVYREutTvI2tmxr6ujrHT704wGF.jpg" alt="Wan Universe poster" loading="lazy"><span class="rating-badge">7.5</span>
           <div class="hub-card-body"><span class="hub-card-tag">Horror franchise</span><h3>The Conjuring / Wan Universe</h3><p>Nine films spanning three in-story centuries — release order or the timeline the Warrens actually lived.</p><div class="hub-card-meta"><span>Release ↔ Chronological</span><span>9 films</span></div></div>
         </a>
+        <a class="hub-card hub-card--media reveal" href="attack-on-titan.html">
+          <img class="hub-card-img" src="https://image.tmdb.org/t/p/w500/hTP1DtLGFamjfu8WqjnuQdP1n4i.jpg" alt="Attack on Titan poster" loading="lazy"><span class="rating-badge">8.7</span>
+          <div class="hub-card-body"><span class="hub-card-tag">Anime</span><h3>Attack on Titan</h3><p>7 parts across 4 seasons, plus the compilation-movies-vs-series question, answered.</p><div class="hub-card-meta"><span>No toggle needed</span><span>7 entries</span></div></div>
+        </a>
+        <a class="hub-card hub-card--media reveal" href="harry-potter.html">
+          <img class="hub-card-img" src="https://image.tmdb.org/t/p/w500/wuMc08IPKEatf9rnMNXvIDxqP4W.jpg" alt="Harry Potter poster" loading="lazy"><span class="rating-badge">7.9</span>
+          <div class="hub-card-body"><span class="hub-card-tag">Franchise · Simple</span><h3>Harry Potter</h3><p>The rare franchise where release order and story order are the exact same order.</p><div class="hub-card-meta"><span>No toggle needed</span><span>8 films</span></div></div>
+        </a>
       </div>
     </div>
   </section>
@@ -116,6 +126,7 @@
           <h4>About</h4>
           <a href="../about.html">About ReelPath</a>
           <a href="../about.html#credits">Credits &amp; sources</a>
+          <a href="../about.html#data-license">Open data</a>
         </div>
       </div>
     </div>

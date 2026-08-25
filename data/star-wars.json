@@ -1,0 +1,150 @@
+{
+   "guideUrl" : "https://reelpath.pages.dev/watch-order/star-wars.html",
+   "license" : "CC-BY-4.0 -- attribution appreciated, corrections and additions welcome via PR",
+   "slug" : "star-wars",
+   "entryCount" : 14,
+   "franchise" : "Star Wars",
+   "source" : "ReelPath (https://reelpath.pages.dev)",
+   "entries" : [
+      {
+         "type" : "movie",
+         "filler" : false,
+         "meta" : "1977",
+         "chronoPosition" : 8,
+         "poster" : "https://image.tmdb.org/t/p/w500/fai0rspsNeJCS69wHNjOdWxcI7P.jpg",
+         "position" : 1,
+         "rating" : 8.2,
+         "title" : "Star Wars: Episode IV - A New Hope"
+      },
+      {
+         "meta" : "1980",
+         "filler" : false,
+         "chronoPosition" : 9,
+         "type" : "movie",
+         "title" : "The Empire Strikes Back",
+         "rating" : 8.4,
+         "position" : 2,
+         "poster" : "https://image.tmdb.org/t/p/w500/nNAeTmF4CtdSgMDplXTDPOpYzsX.jpg"
+      },
+      {
+         "type" : "movie",
+         "filler" : false,
+         "meta" : "1983",
+         "chronoPosition" : 10,
+         "position" : 3,
+         "poster" : "https://image.tmdb.org/t/p/w500/jQYlydvHm3kUix1f8prMucrplhm.jpg",
+         "rating" : 7.9,
+         "title" : "Return of the Jedi"
+      },
+      {
+         "title" : "Star Wars: Episode I - The Phantom Menace",
+         "rating" : 6.6,
+         "position" : 4,
+         "poster" : "https://image.tmdb.org/t/p/w500/6wkfovpn7Eq8dYNKaG5PY3q2oq6.jpg",
+         "meta" : "1999",
+         "chronoPosition" : 1,
+         "filler" : false,
+         "type" : "movie"
+      },
+      {
+         "type" : "movie",
+         "filler" : false,
+         "meta" : "2002",
+         "chronoPosition" : 2,
+         "rating" : 6.6,
+         "position" : 5,
+         "poster" : "https://image.tmdb.org/t/p/w500/oZNPzxqM2s5DyVWab09NTQScDQt.jpg",
+         "title" : "Star Wars: Episode II - Attack of the Clones"
+      },
+      {
+         "title" : "Star Wars: Episode III - Revenge of the Sith",
+         "position" : 6,
+         "poster" : "https://image.tmdb.org/t/p/w500/xfSAoBEm9MNBjmlNcDYLvLSMlnq.jpg",
+         "rating" : 7.5,
+         "meta" : "2005",
+         "filler" : false,
+         "chronoPosition" : 3,
+         "type" : "movie"
+      },
+      {
+         "rating" : 7.2,
+         "position" : 7,
+         "poster" : "https://image.tmdb.org/t/p/w500/wqnLdwVXoBjKibFRR5U3y0aDUhs.jpg",
+         "title" : "Star Wars: The Force Awakens",
+         "type" : "movie",
+         "filler" : false,
+         "meta" : "2015",
+         "chronoPosition" : 12
+      },
+      {
+         "title" : "Rogue One: A Star Wars Story",
+         "rating" : 7.5,
+         "position" : 8,
+         "poster" : "https://image.tmdb.org/t/p/w500/i0yw1mFbB7sNGHCs7EXZPzFkdA1.jpg",
+         "filler" : false,
+         "meta" : "2016",
+         "chronoPosition" : 7,
+         "type" : "movie"
+      },
+      {
+         "title" : "Star Wars: The Last Jedi",
+         "position" : 9,
+         "poster" : "https://image.tmdb.org/t/p/w500/ySaaKHOLAQU5HoZqWmzDIj1VvZ1.jpg",
+         "rating" : 6.7,
+         "filler" : false,
+         "meta" : "2017",
+         "chronoPosition" : 13,
+         "type" : "movie"
+      },
+      {
+         "filler" : false,
+         "chronoPosition" : 4,
+         "meta" : "2018",
+         "type" : "movie",
+         "title" : "Solo: A Star Wars Story",
+         "position" : 10,
+         "poster" : "https://image.tmdb.org/t/p/w500/4oD6VEccFkorEBTEDXtpLAaz0Rl.jpg",
+         "rating" : 6.6
+      },
+      {
+         "title" : "Star Wars: The Rise of Skywalker",
+         "rating" : 6.3,
+         "position" : 11,
+         "poster" : "https://image.tmdb.org/t/p/w500/db32LaOibwEliAmSL2jjDF6oDdj.jpg",
+         "meta" : "2019",
+         "filler" : false,
+         "chronoPosition" : 14,
+         "type" : "movie"
+      },
+      {
+         "type" : "series",
+         "filler" : false,
+         "meta" : "2019",
+         "chronoPosition" : 11,
+         "rating" : 8.4,
+         "position" : 12,
+         "poster" : "https://image.tmdb.org/t/p/w500/sWgBv7LV2PRoQgkxwlibdGXKz1S.jpg",
+         "title" : "The Mandalorian"
+      },
+      {
+         "rating" : 7,
+         "position" : 13,
+         "poster" : "https://image.tmdb.org/t/p/w500/qJRB789ceLryrLvOKrZqLKr2CGf.jpg",
+         "title" : "Obi-Wan Kenobi",
+         "type" : "series",
+         "chronoPosition" : 5,
+         "meta" : "2022",
+         "filler" : false
+      },
+      {
+         "chronoPosition" : 6,
+         "meta" : "2022",
+         "filler" : false,
+         "type" : "series",
+         "title" : "Andor",
+         "poster" : "https://image.tmdb.org/t/p/w500/khZqmwHQicTYoS7Flreb9EddFZC.jpg",
+         "position" : 14,
+         "rating" : 8.3
+      }
+   ]
+}

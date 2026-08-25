@@ -1,0 +1,60 @@
+{
+   "source" : "ReelPath (https://reelpath.pages.dev)",
+   "entries" : [
+      {
+         "rating" : 8.7,
+         "position" : 1,
+         "poster" : "https://image.tmdb.org/t/p/w500/hTP1DtLGFamjfu8WqjnuQdP1n4i.jpg",
+         "title" : "Season 1",
+         "filler" : false,
+         "meta" : "2013"
+      },
+      {
+         "title" : "Season 2",
+         "filler" : false,
+         "meta" : "2017",
+         "position" : 2,
+         "poster" : "https://image.tmdb.org/t/p/w500/wg0GsFpeHAFPbbcfsntTQBggWCo.jpg"
+      },
+      {
+         "poster" : "https://image.tmdb.org/t/p/w500/wYisyC5IeuAN5WB5X81eMDcUdwu.jpg",
+         "position" : 3,
+         "filler" : false,
+         "title" : "Season 3 Part 1",
+         "meta" : "2018"
+      },
+      {
+         "title" : "Season 3 Part 2",
+         "filler" : false,
+         "meta" : "2019",
+         "position" : 4,
+         "poster" : "https://image.tmdb.org/t/p/w500/yvKrycViRMQcIgdnjsM5JGNWU4Q.jpg"
+      },
+      {
+         "position" : 5,
+         "poster" : "https://image.tmdb.org/t/p/w500/aok7IhrbA83josNz9Dqh8tNA0Ao.jpg",
+         "filler" : false,
+         "meta" : "2020",
+         "title" : "Final Season Pt. 1"
+      },
+      {
+         "filler" : false,
+         "title" : "Final Season Pt. 2",
+         "meta" : "2022",
+         "position" : 6,
+         "poster" : "https://image.tmdb.org/t/p/w500/3T5N0Fg6hE3lE6JHJJPKrjtdI4j.jpg"
+      },
+      {
+         "poster" : "https://image.tmdb.org/t/p/w500/uACJw45EEkB5mfFw4SgMtgZgBBJ.jpg",
+         "position" : 7,
+         "meta" : "2023",
+         "filler" : false,
+         "title" : "The Final Chapters"
+      }
+   ],
+   "franchise" : "Attack on Titan",
+   "entryCount" : 7,
+   "slug" : "attack-on-titan",
+   "license" : "CC-BY-4.0 -- attribution appreciated, corrections and additions welcome via PR",
+   "guideUrl" : "https://reelpath.pages.dev/watch-order/attack-on-titan.html"
+}

@@ -10,6 +10,29 @@
     else document.addEventListener("DOMContentLoaded", fn);
   }
 
+  /* ---- Dark/light theme toggle ----
+     Default is always dark -- the inline anti-flash script in <head>
+     already applied data-theme="light" before paint if that was the
+     saved choice, so this just wires the button and keeps localStorage
+     in sync going forward. */
+  function mountThemeToggle() {
+    var btn = document.getElementById("themeToggle");
+    if (!btn) return;
+    function isLight() { return document.documentElement.getAttribute("data-theme") === "light"; }
+    function reflect() { btn.setAttribute("aria-pressed", isLight() ? "true" : "false"); }
+    reflect();
+    btn.addEventListener("click", function () {
+      var next = isLight() ? "dark" : "light";
+      if (next === "light") {
+        document.documentElement.setAttribute("data-theme", "light");
+      } else {
+        document.documentElement.removeAttribute("data-theme");
+      }
+      try { localStorage.setItem("reelpath-theme", next); } catch (e) {}
+      reflect();
+    });
+  }
+
   /* ---- Mobile nav toggle ---- */
   function mountNavToggle() {
     var btn = document.querySelector(".nav-toggle");
@@ -210,6 +233,35 @@
     });
   }
 
+  /* ---- "Embed this guide" widget ----
+     One per franchise guide page: [data-embed-slug] toggles a code box
+     containing the iframe snippet for that franchise's /embed/<slug>.html
+     page, with a copy-to-clipboard button. */
+  function mountEmbedWidget() {
+    var btn = document.querySelector("[data-embed-slug]");
+    if (!btn) return;
+    var box = document.getElementById("embedCodeBox");
+    var textarea = document.getElementById("embedCodeText");
+    var copyBtn = document.getElementById("embedCopyBtn");
+    if (!box || !textarea) return;
+    btn.addEventListener("click", function () {
+      box.hidden = !box.hidden;
+      if (!box.hidden) { textarea.focus(); textarea.select(); }
+    });
+    if (copyBtn) {
+      copyBtn.addEventListener("click", function () {
+        textarea.select();
+        var copied = false;
+        try { copied = document.execCommand("copy"); } catch (e) {}
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(textarea.value).catch(function () {});
+        }
+        copyBtn.textContent = "Copied!";
+        setTimeout(function () { copyBtn.textContent = "Copy code"; }, 1600);
+      });
+    }
+  }
+
   /* ---- Homepage "signature tool" franchise switcher ----
      Four full node panels (one per franchise, reusing each franchise's own
      data) live side by side in the DOM; only one is shown at a time. Each
@@ -227,6 +279,10 @@
     var toggleLabel = document.getElementById("demoToggleLabel");
     var toggleEl = document.getElementById("demoToggle");
     var orderSwitch = document.getElementById("demoOrderSwitch");
+    var modePills = document.getElementById("demoModePills");
+    var bingeBox = document.getElementById("bingeBox");
+    var bingeTime = document.getElementById("bingeBoxTime");
+    var bingeDays = document.getElementById("bingeBoxDays");
     var footnoteLink = document.getElementById("demoLink");
     var track = section.querySelector(".path-track");
     if (!track) return;
@@ -239,8 +295,50 @@
       fate: { heading: "Fate — the core path, untangled", mode: "toggle", label: "Hide side stories", hideClass: "side",
         link: "watch-order/fate.html", linkText: "See the full Fate guide →" },
       wan: { heading: "Wan Universe — release or chronological", mode: "order",
-        link: "watch-order/wan-universe.html", linkText: "See the full Wan Universe guide →" }
+        link: "watch-order/wan-universe.html", linkText: "See the full Wan Universe guide →" },
+      onepieceModes: {
+        modes: [
+          { key: "complete", label: "Complete" },
+          { key: "essentials", label: "Story Essentials" },
+          { key: "fastest", label: "Fastest Route" }
+        ]
+      },
+      mcuModes: {
+        modes: [
+          { key: "release", label: "Release Order" },
+          { key: "chrono", label: "Chronological Order" },
+          { key: "movies", label: "Movies Only" },
+          { key: "essential", label: "Essential" }
+        ]
+      }
     };
+
+    /* ---- Binge Math Box: sums whatever's currently visible in `nodes`
+       and renders "≈Xh" + "at 2h/day → ≈Y days". `unit` picks how each
+       node's runtime is read: "eps24" reads data-eps and multiplies by
+       24min/episode (One Piece), "minutes" reads data-minutes directly
+       (MCU). `factor` is an extra multiplier (used for One Piece's
+       "Fastest Route", which assumes ~5% of runtime is skippable
+       recap/preview padding even within kept episodes). ---- */
+    function renderBinge(nodes, unit, factor) {
+      if (!bingeBox) return;
+      var totalMin = 0;
+      nodes.forEach(function (n) {
+        if (n.classList.contains("hidden") || n.style.display === "none") return;
+        if (unit === "eps24") {
+          var eps = parseFloat(n.getAttribute("data-eps") || "0");
+          totalMin += eps * 24;
+        } else {
+          totalMin += parseFloat(n.getAttribute("data-minutes") || "0");
+        }
+      });
+      totalMin *= (factor || 1);
+      var hours = totalMin / 60;
+      var days = Math.max(1, Math.ceil(hours / 2));
+      bingeTime.textContent = "≈" + Math.round(hours) + " hours";
+      bingeDays.textContent = "at 2h/day → ≈" + days + " days";
+      bingeBox.style.display = "";
+    }
 
     function activatePanel(key, panel) {
       var cfg = config[key];
@@ -248,9 +346,75 @@
       footnoteLink.setAttribute("href", cfg.link);
       footnoteLink.textContent = cfg.linkText;
 
-      if (cfg.mode === "toggle") {
+      if (key === "onepiece") {
+        toggleRow.style.display = "none";
+        orderSwitch.style.display = "none";
+        modePills.style.display = "";
+        modePills.innerHTML = "";
+        var allNodes = panel.querySelectorAll(".node");
+        var fillerNodes = panel.querySelectorAll(".node.filler");
+        config.onepieceModes.modes.forEach(function (m) {
+          var b = document.createElement("button");
+          b.type = "button";
+          b.textContent = m.label;
+          b.setAttribute("data-mode", m.key);
+          if (m.key === "complete") b.classList.add("active");
+          modePills.appendChild(b);
+        });
+        function applyOpMode(modeKey) {
+          modePills.querySelectorAll("button").forEach(function (b) {
+            b.classList.toggle("active", b.getAttribute("data-mode") === modeKey);
+          });
+          var showFiller = modeKey === "complete";
+          fillerNodes.forEach(function (n) { n.classList.toggle("hidden", !showFiller); });
+          var factor = modeKey === "fastest" ? 0.95 : 1;
+          renderBinge(allNodes, "eps24", factor);
+        }
+        modePills.querySelectorAll("button").forEach(function (b) {
+          b.onclick = function () { applyOpMode(b.getAttribute("data-mode")); };
+        });
+        applyOpMode("complete");
+      } else if (key === "mcu") {
+        toggleRow.style.display = "none";
+        orderSwitch.style.display = "none";
+        modePills.style.display = "";
+        modePills.innerHTML = "";
+        var mcuNodes = panel.querySelectorAll(".node");
+        config.mcuModes.modes.forEach(function (m) {
+          var b = document.createElement("button");
+          b.type = "button";
+          b.textContent = m.label;
+          b.setAttribute("data-mode", m.key);
+          if (m.key === "release") b.classList.add("active");
+          modePills.appendChild(b);
+        });
+        function applyMcuMode(modeKey) {
+          modePills.querySelectorAll("button").forEach(function (b) {
+            b.classList.toggle("active", b.getAttribute("data-mode") === modeKey);
+          });
+          var orderAttr = modeKey === "chrono" ? "chrono" : "release";
+          mcuNodes.forEach(function (n) {
+            var pos = n.getAttribute("data-order-" + orderAttr);
+            var meta = n.getAttribute("data-meta-" + orderAttr);
+            var dot = n.querySelector(".node-dot");
+            var metaEl = n.querySelector(".node-meta");
+            if (pos) n.style.order = pos;
+            if (dot && pos) dot.textContent = pos;
+            if (metaEl && meta) metaEl.textContent = meta;
+            var isEssential = n.getAttribute("data-essential") === "1";
+            n.classList.toggle("hidden", modeKey === "essential" && !isEssential);
+          });
+          renderBinge(mcuNodes, "minutes", 1);
+        }
+        modePills.querySelectorAll("button").forEach(function (b) {
+          b.onclick = function () { applyMcuMode(b.getAttribute("data-mode")); };
+        });
+        applyMcuMode("release");
+      } else if (cfg.mode === "toggle") {
         toggleRow.style.display = "";
         orderSwitch.style.display = "none";
+        modePills.style.display = "none";
+        bingeBox.style.display = "none";
         toggleLabel.textContent = cfg.label;
         toggleEl.classList.remove("on");
         toggleEl.setAttribute("aria-checked", "false");
@@ -269,6 +433,8 @@
       } else {
         toggleRow.style.display = "none";
         orderSwitch.style.display = "";
+        modePills.style.display = "none";
+        bingeBox.style.display = "none";
         var buttons = orderSwitch.querySelectorAll("[data-order-btn]");
         var nodes = panel.querySelectorAll(".node");
         function apply(order) {
@@ -328,6 +494,7 @@
   }
 
   ready(function () {
+    mountThemeToggle();
     mountNavToggle();
     mountNavActive();
     mountCardTilt();
@@ -338,6 +505,7 @@
     mountRailAutoScroll();
     mountScrollArrows();
     mountFranchiseDemo();
+    mountEmbedWidget();
     var yearEl = document.getElementById("year");
     if (yearEl) yearEl.textContent = new Date().getFullYear();
   });
