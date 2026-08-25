@@ -102,12 +102,24 @@ header.nav{
   display:flex;flex-direction:column;align-items:center;text-align:center;
   background:var(--bg);
 }
+/* Per-page hero backdrop: each page sets --hero-img inline (a single
+   franchise/genre-specific backdrop). Homepage keeps the mixed collage
+   via .hero--collage, which overrides background-image entirely below. */
 .hero::before{
   content:"";position:absolute;inset:-14px;z-index:0;pointer-events:none;
   filter:blur(3px) saturate(0.85);
   background-image:
-    linear-gradient(180deg, rgba(5,6,10,0.5) 0%, rgba(6,7,12,0.9) 65%, var(--bg) 100%),
-    linear-gradient(rgba(8,8,14,0.62), rgba(8,8,14,0.62)),
+    linear-gradient(180deg, rgba(5,6,10,0.4) 0%, rgba(6,7,12,0.74) 65%, var(--bg) 100%),
+    linear-gradient(rgba(8,8,14,0.5), rgba(8,8,14,0.5)),
+    var(--hero-img, none);
+  background-size:cover,cover,cover;
+  background-position:center,center,center 25%;
+  background-repeat:no-repeat;
+}
+.hero--collage::before{
+  background-image:
+    linear-gradient(180deg, rgba(5,6,10,0.4) 0%, rgba(6,7,12,0.74) 65%, var(--bg) 100%),
+    linear-gradient(rgba(8,8,14,0.5), rgba(8,8,14,0.5)),
     url('https://image.tmdb.org/t/p/w500/ulcAi4dKpAjHwYGS08vNyx9H6I9.jpg'),
     url('https://image.tmdb.org/t/p/w500/dB4EDhre2dsC2kxYDavyKWqLQwi.jpg'),
     url('https://image.tmdb.org/t/p/w500/191nKfP0ehp3uIvWqgPbFmI4lv9.jpg'),
@@ -118,7 +130,6 @@ header.nav{
     url('https://image.tmdb.org/t/p/w500/4lbclFySvugI51fwsyxBTOm4DqK.jpg');
   background-size:cover,cover,12.5% 100%,12.5% 100%,12.5% 100%,12.5% 100%,12.5% 100%,12.5% 100%,12.5% 100%,12.5% 100%;
   background-position:center,center,0% 50%,14.2857% 50%,28.5714% 50%,42.8571% 50%,57.1429% 50%,71.4286% 50%,85.7143% 50%,100% 50%;
-  background-repeat:no-repeat;
 }
 .hero--compact{padding:80px 32px 60px;}
 .hero-glow{
@@ -285,6 +296,34 @@ h1,h2,h3{font-family:'Bebas Neue',sans-serif;text-transform:uppercase;}
 .legend-dot{width:9px;height:9px;border-radius:50%;background:var(--violet);display:inline-block;}
 .legend-dot.faint{background:var(--text-faint);}
 
+/* --------------------------- ENTRY DETAIL LIST ----------------------------- */
+.entry-detail-list{display:flex;flex-direction:column;gap:20px;}
+.entry-detail{
+  display:flex;gap:24px;padding:22px;border-radius:var(--radius);border:1px solid var(--line);
+  background:var(--bg-elev);transition:border-color .3s;
+}
+.entry-detail:hover{border-color:var(--violet-dim);}
+.entry-detail-img{
+  flex:0 0 140px;width:140px;height:210px;object-fit:cover;border-radius:10px;
+  border:1px solid var(--line-strong);background:var(--bg-elev-2);
+}
+.entry-detail-body{flex:1;min-width:0;display:flex;flex-direction:column;}
+.entry-detail-top{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:8px;}
+.entry-detail-title{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:0.01em;}
+.entry-detail-meta{font-size:12px;color:var(--text-faint);}
+.entry-detail-tag{
+  font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--violet);
+  border:1px solid var(--line-strong);padding:3px 9px;border-radius:999px;
+}
+.entry-detail-desc{font-size:14px;color:var(--text-dim);margin-bottom:16px;max-width:640px;}
+.entry-detail-action{margin-top:auto;}
+.entry-detail.filler .entry-detail-tag{color:var(--text-faint);}
+.entry-detail.filler{opacity:0.8;}
+@media (max-width:640px){
+  .entry-detail{flex-direction:column;}
+  .entry-detail-img{width:100%;height:180px;flex:0 0 auto;}
+}
+
 /* -------------------------------- GENRE GRID ------------------------------ */
 .genre-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
 .genre-card{
@@ -314,6 +353,7 @@ h1,h2,h3{font-family:'Bebas Neue',sans-serif;text-transform:uppercase;}
 
 /* ---------------------------------- HUBS ----------------------------------- */
 .hub-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+.hub-grid--3{grid-template-columns:repeat(3,1fr);}
 .hub-card{
   display:block;padding:28px;border-radius:var(--radius);border:1px solid var(--line);
   background:linear-gradient(150deg,var(--bg-elev),var(--bg-elev-2));
@@ -324,6 +364,10 @@ h1,h2,h3{font-family:'Bebas Neue',sans-serif;text-transform:uppercase;}
 .hub-card h3{font-size:26px;margin-bottom:8px;}
 .hub-card p{font-size:13.5px;color:var(--text-dim);}
 .hub-card-meta{margin-top:16px;font-size:12px;color:var(--text-faint);display:flex;gap:14px;}
+.hub-card--media{padding:0;overflow:hidden;}
+.hub-card-img{width:100%;height:150px;object-fit:cover;display:block;}
+.hub-card-body{padding:20px 22px 22px;}
+.hub-card-body h3{margin-bottom:6px;}
 
 /* ------------------------------- RANKED LISTS ------------------------------ */
 .rank-list{display:flex;flex-direction:column;gap:14px;}
