@@ -332,6 +332,17 @@ h1,h2,h3{font-family:'Bebas Neue',sans-serif;text-transform:uppercase;}
 }
 .node-title{font-size:13px;font-weight:600;margin-bottom:3px;}
 .node-meta{font-size:11px;color:var(--text-faint);}
+/* Generic movie/series type badge for mixed-media watch-order paths
+   (MCU, Star Wars, ...). Not franchise-specific -- any node can carry
+   data-node-type="movie"|"series" and get this label above its title. */
+.node-type-badge{
+  display:inline-block;font-size:9px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;
+  border:1px solid var(--line-strong);color:var(--text-faint);padding:1px 7px;border-radius:999px;
+  margin-bottom:4px;
+}
+.node[data-node-type="series"] .node-type-badge,
+.node-type-badge--series{color:var(--violet);border-color:var(--violet-dim);}
+.entry-detail-top .node-type-badge{margin-bottom:0;margin-right:2px;vertical-align:middle;}
 .path-footnote{margin-top:32px;font-size:13px;color:var(--text-dim);text-align:center;}
 .path-footnote a{color:var(--violet);border-bottom:1px solid var(--violet-dim);}
 .path-legend{display:flex;gap:18px;justify-content:center;margin-top:18px;font-size:11px;color:var(--text-faint);flex-wrap:wrap;}
@@ -441,6 +452,13 @@ h1,h2,h3{font-family:'Bebas Neue',sans-serif;text-transform:uppercase;}
   border:1px solid var(--line-strong);padding:3px 9px;border-radius:999px;
 }
 .rank-pitch{font-size:13.5px;color:var(--text-dim);max-width:640px;}
+/* Quoted-dialogue variant of .rank-pitch, used on the "Most quotable lines"
+   list page -- the line itself, styled larger/italic, above the one-line
+   context note (which still uses .rank-pitch). */
+.rank-quote{
+  font-family:'Bebas Neue',sans-serif;font-style:italic;font-size:19px;letter-spacing:0.01em;
+  color:var(--text);max-width:640px;margin-bottom:4px;
+}
 .rank-action{flex:0 0 auto;}
 @media (max-width:640px){
   .rank-item{flex-wrap:wrap;}
