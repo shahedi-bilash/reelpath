@@ -1,3 +1,5 @@
 .DS_Store
 Thumbs.db
 desktop.ini
+omdb-ratings.json
+scripts/*.json

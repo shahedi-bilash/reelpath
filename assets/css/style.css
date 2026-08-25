@@ -223,6 +223,32 @@ h1,h2,h3{font-family:'Bebas Neue',sans-serif;text-transform:uppercase;}
   text-transform:uppercase;background:rgba(5,6,10,0.7);border:1px solid var(--line-strong);
   padding:5px 10px;border-radius:999px;color:var(--violet);
 }
+
+/* -------------------------------- RATING BADGE ----------------------------- */
+.rating-badge{
+  position:absolute;z-index:2;display:inline-flex;align-items:center;gap:3px;
+  background:rgba(5,6,10,0.82);border:1px solid var(--line-strong);border-radius:999px;
+  color:#f5c144;font-size:11px;font-weight:700;padding:3px 8px;backdrop-filter:blur(4px);
+  font-family:'Inter',sans-serif;letter-spacing:0;
+}
+.rating-badge::before{content:"★";font-size:9px;}
+.rating-badge--sm{font-size:9.5px;padding:2px 6px;gap:2px;}
+.rating-badge--sm::before{font-size:8px;}
+.card .rating-badge{top:14px;right:14px;}
+.node-poster-wrap .rating-badge{top:6px;left:6px;}
+.rank-plate .rating-badge{top:4px;left:4px;}
+.hub-card--media{position:relative;}
+.hub-card--media .rating-badge{top:12px;left:12px;}
+.entry-detail-img-wrap{position:relative;flex:0 0 140px;}
+.entry-detail-img-wrap .rating-badge{top:8px;left:8px;}
+/* Prep for IMDb/RT badges (added once an OMDb key is available — see
+   scripts/fetch-omdb-ratings.ps1): a second .rating-badge in the same
+   poster context stacks directly below the first with no extra CSS work. */
+.card .rating-badge:nth-of-type(2){top:40px;right:14px;}
+.node-poster-wrap .rating-badge:nth-of-type(2){top:28px;left:6px;}
+.rank-plate .rating-badge:nth-of-type(2){top:22px;left:4px;}
+.hub-card--media .rating-badge:nth-of-type(2){top:38px;left:12px;}
+.entry-detail-img-wrap .rating-badge:nth-of-type(2){top:32px;left:8px;}
 .card-title{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:0.01em;line-height:1.1;text-shadow:0 2px 8px rgba(0,0,0,0.8);}
 .card-sub{font-size:12px;color:var(--text-dim);margin-top:4px;text-shadow:0 1px 4px rgba(0,0,0,0.8);}
 .card-mark{display:none;}
@@ -255,6 +281,23 @@ h1,h2,h3{font-family:'Bebas Neue',sans-serif;text-transform:uppercase;}
   padding:8px 16px;border-radius:999px;transition:background .2s,color .2s;
 }
 .order-switch button.active{background:var(--violet);color:#f5f3ff;}
+
+.demo-controls{display:flex;align-items:center;}
+.franchise-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;}
+.franchise-tab{
+  background:var(--bg-elev);border:1px solid var(--line-strong);color:var(--text-dim);
+  font-size:12.5px;font-weight:600;padding:9px 18px;border-radius:999px;white-space:nowrap;
+  transition:background .2s,color .2s,border-color .2s;
+}
+.franchise-tab:hover:not(.active){border-color:var(--violet-dim);color:var(--text);}
+.franchise-tab.active{background:var(--violet);color:#f5f3ff;border-color:var(--violet);}
+@media (max-width:640px){
+  .franchise-tabs{flex-wrap:nowrap;overflow-x:auto;padding-bottom:6px;scrollbar-width:none;}
+  .franchise-tabs::-webkit-scrollbar{display:none;}
+  .franchise-tab{flex:0 0 auto;}
+}
+.path-nodes{transition:opacity .2s ease,transform .2s ease;}
+.path-nodes.demo-fade-out,.path-nodes.demo-fade-in{opacity:0;transform:translateY(6px);}
 
 .path-track{position:relative;padding:30px 0 10px;overflow-x:auto;scrollbar-width:none;}
 .path-track::-webkit-scrollbar{display:none;}

@@ -210,6 +210,123 @@
     });
   }
 
+  /* ---- Homepage "signature tool" franchise switcher ----
+     Four full node panels (one per franchise, reusing each franchise's own
+     data) live side by side in the DOM; only one is shown at a time. Each
+     franchise needs a different control below the heading: One Piece and
+     Fate use the binary hide-toggle pattern, MCU and Wan Universe use the
+     release/chronological order-switch — so this rewires that control's
+     behaviour on every tab switch rather than reusing the generic
+     single-page mount functions. */
+  function mountFranchiseDemo() {
+    var section = document.getElementById("signatureDemo");
+    if (!section) return;
+    var tabs = document.querySelectorAll(".franchise-tab");
+    var heading = document.getElementById("demoHeading");
+    var toggleRow = document.getElementById("demoToggleRow");
+    var toggleLabel = document.getElementById("demoToggleLabel");
+    var toggleEl = document.getElementById("demoToggle");
+    var orderSwitch = document.getElementById("demoOrderSwitch");
+    var footnoteLink = document.getElementById("demoLink");
+    var track = section.querySelector(".path-track");
+    if (!track) return;
+
+    var config = {
+      onepiece: { heading: "One Piece — the right order", mode: "toggle", label: "Skip filler", hideClass: "filler",
+        link: "watch-order/one-piece.html", linkText: "See the full One Piece guide →" },
+      mcu: { heading: "MCU — release or chronological", mode: "order",
+        link: "watch-order/mcu.html", linkText: "See the full MCU guide →" },
+      fate: { heading: "Fate — the core path, untangled", mode: "toggle", label: "Hide side stories", hideClass: "side",
+        link: "watch-order/fate.html", linkText: "See the full Fate guide →" },
+      wan: { heading: "Wan Universe — release or chronological", mode: "order",
+        link: "watch-order/wan-universe.html", linkText: "See the full Wan Universe guide →" }
+    };
+
+    function activatePanel(key, panel) {
+      var cfg = config[key];
+      heading.textContent = cfg.heading;
+      footnoteLink.setAttribute("href", cfg.link);
+      footnoteLink.textContent = cfg.linkText;
+
+      if (cfg.mode === "toggle") {
+        toggleRow.style.display = "";
+        orderSwitch.style.display = "none";
+        toggleLabel.textContent = cfg.label;
+        toggleEl.classList.remove("on");
+        toggleEl.setAttribute("aria-checked", "false");
+        var hideNodes = panel.querySelectorAll(".node." + cfg.hideClass);
+        hideNodes.forEach(function (n) { n.classList.remove("hidden"); });
+        var handler = function () {
+          var on = !toggleEl.classList.contains("on");
+          toggleEl.classList.toggle("on", on);
+          toggleEl.setAttribute("aria-checked", on);
+          hideNodes.forEach(function (n) { n.classList.toggle("hidden", on); });
+        };
+        toggleEl.onclick = handler;
+        toggleEl.onkeydown = function (e) {
+          if (e.key === "Enter" || e.key === " ") { e.preventDefault(); handler(); }
+        };
+      } else {
+        toggleRow.style.display = "none";
+        orderSwitch.style.display = "";
+        var buttons = orderSwitch.querySelectorAll("[data-order-btn]");
+        var nodes = panel.querySelectorAll(".node");
+        function apply(order) {
+          buttons.forEach(function (b) { b.classList.toggle("active", b.getAttribute("data-order-btn") === order); });
+          nodes.forEach(function (n) {
+            var pos = n.getAttribute("data-order-" + order);
+            var meta = n.getAttribute("data-meta-" + order);
+            var dot = n.querySelector(".node-dot");
+            var metaEl = n.querySelector(".node-meta");
+            if (pos) n.style.order = pos;
+            if (dot && pos) dot.textContent = pos;
+            if (metaEl && meta) metaEl.textContent = meta;
+          });
+        }
+        buttons.forEach(function (b) {
+          b.onclick = function () { apply(b.getAttribute("data-order-btn")); };
+        });
+        var activeBtn = orderSwitch.querySelector(".active") || buttons[0];
+        apply(activeBtn.getAttribute("data-order-btn"));
+      }
+    }
+
+    var currentKey = "onepiece";
+    function switchTo(key) {
+      var newPanel = section.querySelector('.path-nodes[data-franchise-panel="' + key + '"]');
+      var oldPanel = section.querySelector('.path-nodes[data-franchise-panel="' + currentKey + '"]');
+      if (!newPanel || key === currentKey) return;
+      currentKey = key;
+      tabs.forEach(function (t) { t.classList.toggle("active", t.getAttribute("data-franchise") === key); });
+
+      var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (oldPanel && !reduceMotion) {
+        oldPanel.classList.add("demo-fade-out");
+        setTimeout(function () {
+          oldPanel.style.display = "none";
+          oldPanel.classList.remove("demo-fade-out");
+          newPanel.style.display = "flex";
+          newPanel.classList.add("demo-fade-in");
+          track.scrollLeft = 0;
+          activatePanel(key, newPanel);
+          requestAnimationFrame(function () { newPanel.classList.remove("demo-fade-in"); });
+        }, 200);
+      } else {
+        if (oldPanel) oldPanel.style.display = "none";
+        newPanel.style.display = "flex";
+        track.scrollLeft = 0;
+        activatePanel(key, newPanel);
+      }
+    }
+
+    tabs.forEach(function (t) {
+      t.addEventListener("click", function () { switchTo(t.getAttribute("data-franchise")); });
+    });
+
+    var initial = section.querySelector('.path-nodes[data-franchise-panel="onepiece"]');
+    if (initial) activatePanel("onepiece", initial);
+  }
+
   ready(function () {
     mountNavToggle();
     mountNavActive();
@@ -220,6 +337,7 @@
     mountOrderSwitch();
     mountRailAutoScroll();
     mountScrollArrows();
+    mountFranchiseDemo();
     var yearEl = document.getElementById("year");
     if (yearEl) yearEl.textContent = new Date().getFullYear();
   });
