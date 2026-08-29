@@ -1,92 +1,92 @@
 {
-   "franchise" : "Fate Series",
-   "entryCount" : 10,
-   "slug" : "fate",
-   "license" : "CC-BY-4.0 -- attribution appreciated, corrections and additions welcome via PR",
-   "guideUrl" : "https://reelpath.pages.dev/watch-order/fate.html",
-   "source" : "ReelPath (https://reelpath.pages.dev)",
    "entries" : [
       {
-         "rating" : 8,
-         "poster" : "https://image.tmdb.org/t/p/w500/chUbHBiMX7buj8TzOEIjHHPCJfF.jpg",
-         "position" : 1,
-         "meta" : "Prequel · start here",
          "filler" : false,
+         "meta" : "Prequel · start here",
+         "position" : 1,
+         "poster" : "https://image.tmdb.org/t/p/w500/chUbHBiMX7buj8TzOEIjHHPCJfF.jpg",
+         "rating" : 8,
          "title" : "Fate/Zero"
       },
       {
-         "rating" : 6.8,
-         "poster" : "https://image.tmdb.org/t/p/w500/kKtYZGaIFuG7vztNdxkoBq324s0.jpg",
-         "position" : 2,
-         "sideStory" : true,
-         "meta" : "Zero side story",
          "filler" : false,
+         "meta" : "Zero side story",
+         "position" : 2,
+         "poster" : "https://image.tmdb.org/t/p/w500/kKtYZGaIFuG7vztNdxkoBq324s0.jpg",
+         "rating" : 6.8,
+         "sideStory" : true,
          "title" : "Lord El-Melloi II Case Files"
       },
       {
-         "title" : "Fate/stay night: Unlimited Blade Works",
          "filler" : false,
          "meta" : "Main route",
          "position" : 3,
          "poster" : "https://image.tmdb.org/t/p/w500/jyqi5BkDoKKIA2WAoz3HBtRHld3.jpg",
-         "rating" : 8
+         "rating" : 8,
+         "title" : "Fate/stay night: Unlimited Blade Works"
       },
       {
-         "rating" : 6.7,
-         "sideStory" : true,
-         "poster" : "https://image.tmdb.org/t/p/w500/fivwHxH3xddSkSyqonXtuydBpIY.jpg",
-         "position" : 4,
          "filler" : false,
          "meta" : "Spin-off, lighter tone",
+         "position" : 4,
+         "poster" : "https://image.tmdb.org/t/p/w500/fivwHxH3xddSkSyqonXtuydBpIY.jpg",
+         "rating" : 6.7,
+         "sideStory" : true,
          "title" : "Fate/kaleid liner Prisma☆Illya"
       },
       {
-         "rating" : 7.4,
-         "poster" : "https://image.tmdb.org/t/p/w500/6nEtmBg07DA5BWjcrmD49rxHsVQ.jpg",
-         "position" : 5,
-         "meta" : "Movie trilogy",
          "filler" : false,
+         "meta" : "Movie trilogy",
+         "position" : 5,
+         "poster" : "https://image.tmdb.org/t/p/w500/6nEtmBg07DA5BWjcrmD49rxHsVQ.jpg",
+         "rating" : 7.4,
          "title" : "Fate/stay night: Heaven's Feel I–III"
       },
       {
-         "rating" : 7.4,
-         "poster" : "https://image.tmdb.org/t/p/w500/aQvABf8fwwHSdYbMk1Ir3NnvcSp.jpg",
-         "position" : 6,
-         "meta" : "Alt-continuity war",
          "filler" : false,
+         "meta" : "Alt-continuity war",
+         "position" : 6,
+         "poster" : "https://image.tmdb.org/t/p/w500/aQvABf8fwwHSdYbMk1Ir3NnvcSp.jpg",
+         "rating" : 7.4,
          "title" : "Fate/Apocrypha"
       },
       {
+         "filler" : false,
+         "meta" : "Alt-continuity, game tie-in",
          "position" : 7,
          "poster" : "https://image.tmdb.org/t/p/w500/5qveZHKo8RatUbZDzgGG9QEj558.jpg",
-         "sideStory" : true,
          "rating" : 7.3,
-         "title" : "Fate/Extra Last Encore",
-         "filler" : false,
-         "meta" : "Alt-continuity, game tie-in"
+         "sideStory" : true,
+         "title" : "Fate/Extra Last Encore"
       },
       {
+         "filler" : false,
+         "meta" : "GO intro special",
          "position" : 8,
          "poster" : "https://image.tmdb.org/t/p/w500/3u9kOT50sUxGGfzcVjljlQXbt4p.jpg",
          "rating" : 6.7,
-         "title" : "Fate/Grand Order: First Order",
-         "filler" : false,
-         "meta" : "GO intro special"
+         "title" : "Fate/Grand Order: First Order"
       },
       {
+         "filler" : false,
+         "meta" : "GO main story",
          "position" : 9,
          "poster" : "https://image.tmdb.org/t/p/w500/4XjD4Hbyhnn9wakIehZJJ5rtqxn.jpg",
          "rating" : 7.9,
-         "filler" : false,
-         "meta" : "GO main story",
          "title" : "FGO: Absolute Demonic Front – Babylonia"
       },
       {
-         "title" : "Fate/strange Fake",
          "filler" : false,
          "meta" : "GO-adjacent side story",
          "position" : 10,
-         "sideStory" : true
+         "sideStory" : true,
+         "title" : "Fate/strange Fake"
       }
-   ]
+   ],
+   "entryCount" : 10,
+   "franchise" : "Fate Series",
+   "guideUrl" : "https://reelpath.pages.dev/watch-order/fate.html",
+   "license" : "CC-BY-4.0 -- attribution appreciated, corrections and additions welcome via PR",
+   "slug" : "fate",
+   "source" : "ReelPath (https://reelpath.pages.dev)"
 }

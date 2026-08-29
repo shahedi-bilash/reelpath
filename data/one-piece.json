@@ -1,150 +1,150 @@
 {
    "entries" : [
       {
-         "title" : "East Blue",
          "filler" : false,
          "meta" : "Ep 1–61",
+         "position" : 1,
          "poster" : "https://image.tmdb.org/t/p/w500/2rmK7mnchw9Xr3XdiTFSxTTLXqv.jpg",
-         "position" : 1
+         "title" : "East Blue"
       },
       {
-         "meta" : "Ep 54–61",
          "filler" : true,
-         "title" : "Warship Island",
+         "meta" : "Ep 54–61",
+         "position" : 2,
          "poster" : "https://image.tmdb.org/t/p/w500/4Mt7WHox67uJ1yErwTBFcV8KWgG.jpg",
-         "position" : 2
+         "title" : "Warship Island"
       },
       {
-         "poster" : "https://image.tmdb.org/t/p/w500/6fRwRD7GdCfg6owzmCT3VgQtowl.jpg",
-         "position" : 3,
-         "meta" : "Ep 62–130",
          "filler" : false,
+         "meta" : "Ep 62–130",
+         "position" : 3,
+         "poster" : "https://image.tmdb.org/t/p/w500/6fRwRD7GdCfg6owzmCT3VgQtowl.jpg",
          "title" : "Alabasta"
       },
       {
-         "poster" : "https://image.tmdb.org/t/p/w500/oVfucXvhutTpYExG9k06NJqnpT9.jpg",
-         "position" : 4,
-         "title" : "Goat Island",
          "filler" : true,
-         "meta" : "Ep 131–135"
+         "meta" : "Ep 131–135",
+         "position" : 4,
+         "poster" : "https://image.tmdb.org/t/p/w500/oVfucXvhutTpYExG9k06NJqnpT9.jpg",
+         "title" : "Goat Island"
       },
       {
-         "poster" : "https://image.tmdb.org/t/p/w500/a6ptrTUH1c5OdWanjyYtAkOuYD0.jpg",
-         "position" : 5,
-         "meta" : "Ep 136–206",
          "filler" : false,
+         "meta" : "Ep 136–206",
+         "position" : 5,
+         "poster" : "https://image.tmdb.org/t/p/w500/a6ptrTUH1c5OdWanjyYtAkOuYD0.jpg",
          "title" : "Skypiea"
       },
       {
-         "poster" : "https://image.tmdb.org/t/p/w500/tQ8O6nVP8kUXgqlvMYdpklIAQJ2.jpg",
+         "filler" : true,
+         "meta" : "Ep 196–206",
          "position" : 6,
-         "filler" : true,
-         "title" : "G-8",
-         "meta" : "Ep 196–206"
+         "poster" : "https://image.tmdb.org/t/p/w500/tQ8O6nVP8kUXgqlvMYdpklIAQJ2.jpg",
+         "title" : "G-8"
       },
       {
+         "filler" : true,
          "meta" : "Ep 220–224",
-         "filler" : true,
-         "title" : "Foxy's Return",
          "position" : 7,
-         "poster" : "https://image.tmdb.org/t/p/w500/mU39OiqoFSd5Zrp51fK5vsVjgsh.jpg"
+         "poster" : "https://image.tmdb.org/t/p/w500/mU39OiqoFSd5Zrp51fK5vsVjgsh.jpg",
+         "title" : "Foxy's Return"
       },
       {
-         "title" : "Water 7 / Enies Lobby",
          "filler" : false,
          "meta" : "Ep 229–312",
          "position" : 8,
-         "poster" : "https://image.tmdb.org/t/p/w500/mGA1POrWiXZWtmoNzFnug0Fd8bD.jpg"
+         "poster" : "https://image.tmdb.org/t/p/w500/mGA1POrWiXZWtmoNzFnug0Fd8bD.jpg",
+         "title" : "Water 7 / Enies Lobby"
       },
       {
-         "position" : 9,
-         "poster" : "https://image.tmdb.org/t/p/w500/ajjFzbUQvGQ9LY9t9pxuwkTMhqj.jpg",
          "filler" : false,
          "meta" : "Ep 337–381",
+         "position" : 9,
+         "poster" : "https://image.tmdb.org/t/p/w500/ajjFzbUQvGQ9LY9t9pxuwkTMhqj.jpg",
          "title" : "Thriller Bark"
       },
       {
+         "filler" : false,
+         "meta" : "Ep 385–516",
          "position" : 10,
          "poster" : "https://image.tmdb.org/t/p/w500/jeOnKNtvo5akRNPJsDeuomaaI1m.jpg",
-         "filler" : false,
-         "title" : "Marineford War",
-         "meta" : "Ep 385–516"
+         "title" : "Marineford War"
       },
       {
          "filler" : false,
-         "title" : "Fish-Man Island",
          "meta" : "Ep 517–574",
          "position" : 11,
-         "poster" : "https://image.tmdb.org/t/p/w500/ggjpR8Qmaj8t4a0r0fw2xTbhDbj.jpg"
+         "poster" : "https://image.tmdb.org/t/p/w500/ggjpR8Qmaj8t4a0r0fw2xTbhDbj.jpg",
+         "title" : "Fish-Man Island"
       },
       {
-         "poster" : "https://image.tmdb.org/t/p/w500/5UNjRnyucnzhf6zhapBN71Vcosy.jpg",
-         "position" : 12,
-         "title" : "Punk Hazard",
          "filler" : false,
-         "meta" : "Ep 579–625"
+         "meta" : "Ep 579–625",
+         "position" : 12,
+         "poster" : "https://image.tmdb.org/t/p/w500/5UNjRnyucnzhf6zhapBN71Vcosy.jpg",
+         "title" : "Punk Hazard"
       },
       {
-         "meta" : "Ep 626–628",
          "filler" : true,
-         "title" : "Z's Ambition",
+         "meta" : "Ep 626–628",
          "position" : 13,
-         "poster" : "https://image.tmdb.org/t/p/w500/6pqcRWJjzDiDR85AofnmEGvixpm.jpg"
+         "poster" : "https://image.tmdb.org/t/p/w500/6pqcRWJjzDiDR85AofnmEGvixpm.jpg",
+         "title" : "Z's Ambition"
       },
       {
-         "title" : "Dressrosa",
          "filler" : false,
          "meta" : "Ep 629–746",
          "position" : 14,
-         "poster" : "https://image.tmdb.org/t/p/w500/iN5LKyvyWUWwqbjaQfKFXoo8mch.jpg"
+         "poster" : "https://image.tmdb.org/t/p/w500/iN5LKyvyWUWwqbjaQfKFXoo8mch.jpg",
+         "title" : "Dressrosa"
       },
       {
          "filler" : true,
          "meta" : "Ep 747–750",
-         "title" : "Silver Mine",
+         "position" : 15,
          "poster" : "https://image.tmdb.org/t/p/w500/v38qp4bySLTXYu3MF8r5GD51FN3.jpg",
-         "position" : 15
+         "title" : "Silver Mine"
       },
       {
-         "meta" : "Ep 751–782",
          "filler" : false,
-         "title" : "Zou",
+         "meta" : "Ep 751–782",
          "position" : 16,
-         "poster" : "https://image.tmdb.org/t/p/w500/fBkzEe9WX73cdge3z14e1amDtki.jpg"
+         "poster" : "https://image.tmdb.org/t/p/w500/fBkzEe9WX73cdge3z14e1amDtki.jpg",
+         "title" : "Zou"
       },
       {
+         "filler" : false,
+         "meta" : "Ep 783–878",
          "position" : 17,
          "poster" : "https://image.tmdb.org/t/p/w500/kod8JhwQXgxcg8nV5Qc9wJSEvXa.jpg",
-         "meta" : "Ep 783–878",
-         "filler" : false,
          "title" : "Whole Cake Island"
       },
       {
-         "poster" : "https://image.tmdb.org/t/p/w500/62sXjJ60TiEZReoy6oohECsNafR.jpg",
-         "position" : 18,
          "filler" : true,
          "meta" : "Ep 879–889",
+         "position" : 18,
+         "poster" : "https://image.tmdb.org/t/p/w500/62sXjJ60TiEZReoy6oohECsNafR.jpg",
          "title" : "Cidre Guild"
       },
       {
-         "poster" : "https://image.tmdb.org/t/p/w500/eYELHQbSfY3z1hq1RkYptCq2Bzz.jpg",
-         "position" : 19,
-         "title" : "Wano Country",
          "filler" : false,
-         "meta" : "Ep 890–1085"
+         "meta" : "Ep 890–1085",
+         "position" : 19,
+         "poster" : "https://image.tmdb.org/t/p/w500/eYELHQbSfY3z1hq1RkYptCq2Bzz.jpg",
+         "title" : "Wano Country"
       },
       {
          "filler" : false,
-         "title" : "Egghead",
          "meta" : "Ep 1086–ongoing",
+         "position" : 20,
          "poster" : "https://image.tmdb.org/t/p/w500/wZoIvSRpus6RM3IXKYsx7Owzknn.jpg",
-         "position" : 20
+         "title" : "Egghead"
       }
    ],
-   "source" : "ReelPath (https://reelpath.pages.dev)",
    "entryCount" : 20,
    "franchise" : "One Piece",
-   "license" : "CC-BY-4.0 -- attribution appreciated, corrections and additions welcome via PR",
    "guideUrl" : "https://reelpath.pages.dev/watch-order/one-piece.html",
-   "slug" : "one-piece"
+   "license" : "CC-BY-4.0 -- attribution appreciated, corrections and additions welcome via PR",
+   "slug" : "one-piece",
+   "source" : "ReelPath (https://reelpath.pages.dev)"
 }

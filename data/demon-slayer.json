@@ -1,55 +1,55 @@
 {
-   "source" : "ReelPath (https://reelpath.pages.dev)",
    "entries" : [
       {
-         "rating" : 8.6,
+         "filler" : false,
+         "meta" : "2019",
          "position" : 1,
          "poster" : "https://image.tmdb.org/t/p/w500/xUfRZu2mi8jH6SzQEJGP6tjBuYj.jpg",
-         "title" : "Season 1",
-         "filler" : false,
-         "meta" : "2019"
+         "rating" : 8.6,
+         "title" : "Season 1"
       },
       {
-         "title" : "Mugen Train",
          "filler" : false,
          "meta" : "2020",
          "position" : 2,
          "poster" : "https://image.tmdb.org/t/p/w500/h8Rb9gBr48ODIwYUttZNYeMWeUU.jpg",
-         "rating" : 8.2
+         "rating" : 8.2,
+         "title" : "Mugen Train"
       },
       {
-         "poster" : "https://image.tmdb.org/t/p/w500/nTvM4mhqNlHIvUkI1gVnW6XP7GG.jpg",
-         "position" : 3,
-         "meta" : "2021",
          "filler" : false,
+         "meta" : "2021",
+         "position" : 3,
+         "poster" : "https://image.tmdb.org/t/p/w500/nTvM4mhqNlHIvUkI1gVnW6XP7GG.jpg",
          "title" : "Entertainment District Arc"
       },
       {
          "filler" : false,
          "meta" : "2023",
-         "title" : "Swordsmith Village Arc",
+         "position" : 4,
          "poster" : "https://image.tmdb.org/t/p/w500/iBAtBLqCMON3NPIjyQ1wdMbpTAk.jpg",
-         "position" : 4
+         "title" : "Swordsmith Village Arc"
       },
       {
-         "poster" : "https://image.tmdb.org/t/p/w500/unhUWXYl8DFaIsaz6U59cDGSBgj.jpg",
-         "position" : 5,
          "filler" : false,
          "meta" : "2024",
+         "position" : 5,
+         "poster" : "https://image.tmdb.org/t/p/w500/unhUWXYl8DFaIsaz6U59cDGSBgj.jpg",
          "title" : "Hashira Training Arc"
       },
       {
-         "poster" : "https://image.tmdb.org/t/p/w500/fWVSwgjpT2D78VUh6X8UBd2rorW.jpg",
-         "position" : 6,
-         "rating" : 8.8,
          "filler" : false,
          "meta" : "2025",
+         "position" : 6,
+         "poster" : "https://image.tmdb.org/t/p/w500/fWVSwgjpT2D78VUh6X8UBd2rorW.jpg",
+         "rating" : 8.8,
          "title" : "Infinity Castle"
       }
    ],
-   "franchise" : "Demon Slayer",
    "entryCount" : 6,
-   "slug" : "demon-slayer",
+   "franchise" : "Demon Slayer",
+   "guideUrl" : "https://reelpath.pages.dev/watch-order/demon-slayer.html",
    "license" : "CC-BY-4.0 -- attribution appreciated, corrections and additions welcome via PR",
-   "guideUrl" : "https://reelpath.pages.dev/watch-order/demon-slayer.html"
+   "slug" : "demon-slayer",
+   "source" : "ReelPath (https://reelpath.pages.dev)"
 }

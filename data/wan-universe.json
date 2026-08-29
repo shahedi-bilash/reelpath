@@ -1,91 +1,91 @@
 {
    "entries" : [
       {
-         "meta" : "1943–55",
          "chronoPosition" : 1,
          "filler" : false,
-         "title" : "Annabelle: Creation",
-         "rating" : 6.6,
+         "meta" : "1943–55",
+         "position" : 4,
          "poster" : "https://image.tmdb.org/t/p/w500/tb86j8jVCVsdZnzf8I6cIi65IeM.jpg",
-         "position" : 4
+         "rating" : 6.6,
+         "title" : "Annabelle: Creation"
       },
       {
-         "title" : "The Nun",
-         "rating" : 5.9,
-         "poster" : "https://image.tmdb.org/t/p/w500/sFC1ElvoKGdHJIWRpNB3xWJ9lJA.jpg",
-         "position" : 5,
-         "meta" : "1952",
          "chronoPosition" : 2,
-         "filler" : false
-      },
-      {
-         "meta" : "1956",
          "filler" : false,
-         "chronoPosition" : 3,
-         "title" : "The Nun II",
-         "poster" : "https://image.tmdb.org/t/p/w500/5gzzkR7y3hnY8AD1wXjCnVlHba5.jpg",
-         "position" : 9,
-         "rating" : 6.6
+         "meta" : "1952",
+         "position" : 5,
+         "poster" : "https://image.tmdb.org/t/p/w500/sFC1ElvoKGdHJIWRpNB3xWJ9lJA.jpg",
+         "rating" : 5.9,
+         "title" : "The Nun"
       },
       {
-         "rating" : 5.8,
+         "chronoPosition" : 3,
+         "filler" : false,
+         "meta" : "1956",
+         "position" : 9,
+         "poster" : "https://image.tmdb.org/t/p/w500/5gzzkR7y3hnY8AD1wXjCnVlHba5.jpg",
+         "rating" : 6.6,
+         "title" : "The Nun II"
+      },
+      {
+         "chronoPosition" : 4,
+         "filler" : false,
+         "meta" : "1967–70",
          "position" : 2,
          "poster" : "https://image.tmdb.org/t/p/w500/yLsuU2P2SpDYFwtZQ7dtfVAf6TE.jpg",
-         "title" : "Annabelle",
-         "meta" : "1967–70",
-         "filler" : false,
-         "chronoPosition" : 4
+         "rating" : 5.8,
+         "title" : "Annabelle"
       },
       {
+         "chronoPosition" : 5,
          "filler" : false,
          "meta" : "1971",
-         "chronoPosition" : 5,
-         "title" : "The Conjuring",
-         "poster" : "https://image.tmdb.org/t/p/w500/wVYREutTvI2tmxr6ujrHT704wGF.jpg",
          "position" : 1,
-         "rating" : 7.5
+         "poster" : "https://image.tmdb.org/t/p/w500/wVYREutTvI2tmxr6ujrHT704wGF.jpg",
+         "rating" : 7.5,
+         "title" : "The Conjuring"
       },
       {
-         "meta" : "1972",
          "chronoPosition" : 6,
          "filler" : false,
-         "rating" : 6.4,
+         "meta" : "1972",
          "position" : 6,
          "poster" : "https://image.tmdb.org/t/p/w500/qWsHMrbg9DsBY3bCMk9jyYCRVRs.jpg",
+         "rating" : 6.4,
          "title" : "Annabelle Comes Home"
       },
       {
-         "meta" : "1973",
-         "filler" : false,
          "chronoPosition" : 7,
-         "rating" : 5.6,
-         "poster" : "https://image.tmdb.org/t/p/w500/hETrPpoKs6BwoilK64YJ7Z5GcRT.jpg",
+         "filler" : false,
+         "meta" : "1973",
          "position" : 7,
+         "poster" : "https://image.tmdb.org/t/p/w500/hETrPpoKs6BwoilK64YJ7Z5GcRT.jpg",
+         "rating" : 5.6,
          "title" : "The Curse of La Llorona"
       },
       {
-         "meta" : "1977",
-         "filler" : false,
          "chronoPosition" : 8,
+         "filler" : false,
+         "meta" : "1977",
          "position" : 3,
          "poster" : "https://image.tmdb.org/t/p/w500/zEqyD0SBt6HL7W9JQoWwtd5Do1T.jpg",
          "rating" : 7.3,
          "title" : "The Conjuring 2"
       },
       {
-         "rating" : 7.3,
-         "poster" : "https://image.tmdb.org/t/p/w500/xbSuFiJbbBWCkyCCKIMfuDCA4yV.jpg",
-         "position" : 8,
-         "title" : "The Conjuring: The Devil Made Me Do It",
          "chronoPosition" : 9,
+         "filler" : false,
          "meta" : "1981",
-         "filler" : false
+         "position" : 8,
+         "poster" : "https://image.tmdb.org/t/p/w500/xbSuFiJbbBWCkyCCKIMfuDCA4yV.jpg",
+         "rating" : 7.3,
+         "title" : "The Conjuring: The Devil Made Me Do It"
       }
    ],
-   "source" : "ReelPath (https://reelpath.pages.dev)",
-   "franchise" : "The Conjuring / Wan Universe",
    "entryCount" : 9,
-   "slug" : "wan-universe",
+   "franchise" : "The Conjuring / Wan Universe",
    "guideUrl" : "https://reelpath.pages.dev/watch-order/wan-universe.html",
-   "license" : "CC-BY-4.0 -- attribution appreciated, corrections and additions welcome via PR"
+   "license" : "CC-BY-4.0 -- attribution appreciated, corrections and additions welcome via PR",
+   "slug" : "wan-universe",
+   "source" : "ReelPath (https://reelpath.pages.dev)"
 }

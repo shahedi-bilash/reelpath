@@ -1,80 +1,80 @@
 {
-   "slug" : "naruto",
-   "guideUrl" : "https://reelpath.pages.dev/watch-order/naruto.html",
-   "license" : "CC-BY-4.0 -- attribution appreciated, corrections and additions welcome via PR",
-   "franchise" : "Naruto",
-   "entryCount" : 10,
-   "source" : "ReelPath (https://reelpath.pages.dev)",
    "entries" : [
       {
-         "poster" : "https://image.tmdb.org/t/p/w500/5F0HVEgkgP99fEWDjPyikGt9jQi.jpg",
-         "position" : 1,
-         "meta" : "Ep 1–19",
          "filler" : false,
+         "meta" : "Ep 1–19",
+         "position" : 1,
+         "poster" : "https://image.tmdb.org/t/p/w500/5F0HVEgkgP99fEWDjPyikGt9jQi.jpg",
          "title" : "Land of Waves"
       },
       {
-         "meta" : "Ep 20–67",
          "filler" : false,
-         "title" : "Chunin Exams",
+         "meta" : "Ep 20–67",
+         "position" : 2,
          "poster" : "https://image.tmdb.org/t/p/w500/mpsYIytXhDXjI9yYC1Fp1S3PxsS.jpg",
-         "position" : 2
+         "title" : "Chunin Exams"
       },
       {
+         "filler" : false,
+         "meta" : "Ep 68–80",
          "position" : 3,
          "poster" : "https://image.tmdb.org/t/p/w500/6sHC954QPhrrLsT6WPkSie9hVmI.jpg",
-         "meta" : "Ep 68–80",
-         "filler" : false,
          "title" : "Konoha Crush"
       },
       {
-         "title" : "Search for Tsunade",
          "filler" : false,
          "meta" : "Ep 81–91",
+         "position" : 4,
          "poster" : "https://image.tmdb.org/t/p/w500/xuJ0F9RfKvVSJNDg2usurQ9WvY5.jpg",
-         "position" : 4
+         "title" : "Search for Tsunade"
       },
       {
-         "meta" : "Ep 92–107",
          "filler" : true,
-         "title" : "Filler arcs",
+         "meta" : "Ep 92–107",
          "position" : 5,
-         "poster" : "https://image.tmdb.org/t/p/w500/koY8N9Y8IcLlb2eJXz50X1hFUL5.jpg"
+         "poster" : "https://image.tmdb.org/t/p/w500/koY8N9Y8IcLlb2eJXz50X1hFUL5.jpg",
+         "title" : "Filler arcs"
       },
       {
+         "filler" : false,
+         "meta" : "Ep 108–135",
          "position" : 6,
          "poster" : "https://image.tmdb.org/t/p/w500/xppeysfvDKVx775MFuH8Z9BlpMk.jpg",
-         "meta" : "Ep 108–135",
-         "filler" : false,
          "title" : "Sasuke Retrieval"
       },
       {
+         "filler" : true,
+         "meta" : "Ep 136–220",
          "position" : 7,
          "poster" : "https://image.tmdb.org/t/p/w500/z0YhJvomqedHF85bplUJEotkN5l.jpg",
-         "filler" : true,
-         "title" : "Filler saga",
-         "meta" : "Ep 136–220"
+         "title" : "Filler saga"
       },
       {
          "filler" : false,
-         "title" : "Homecoming",
          "meta" : "Shippuden Ep 1–32",
+         "position" : 8,
          "poster" : "https://image.tmdb.org/t/p/w500/swFtS1S5556BFrQNJkwTTmyBFIT.jpg",
-         "position" : 8
+         "title" : "Homecoming"
       },
       {
-         "poster" : "https://image.tmdb.org/t/p/w500/nAeS7F2B22XQOLh5HVNXn8G3ZRk.jpg",
-         "position" : 9,
-         "meta" : "Shippuden Ep 163–175",
          "filler" : false,
+         "meta" : "Shippuden Ep 163–175",
+         "position" : 9,
+         "poster" : "https://image.tmdb.org/t/p/w500/nAeS7F2B22XQOLh5HVNXn8G3ZRk.jpg",
          "title" : "Pain's Assault"
       },
       {
-         "meta" : "Shippuden Ep ~296–500",
          "filler" : false,
-         "title" : "War & Finale",
+         "meta" : "Shippuden Ep ~296–500",
+         "position" : 10,
          "poster" : "https://image.tmdb.org/t/p/w500/deng9qeymn2LTdkXLMpMu68ILn0.jpg",
-         "position" : 10
+         "title" : "War & Finale"
       }
-   ]
+   ],
+   "entryCount" : 10,
+   "franchise" : "Naruto",
+   "guideUrl" : "https://reelpath.pages.dev/watch-order/naruto.html",
+   "license" : "CC-BY-4.0 -- attribution appreciated, corrections and additions welcome via PR",
+   "slug" : "naruto",
+   "source" : "ReelPath (https://reelpath.pages.dev)"
 }

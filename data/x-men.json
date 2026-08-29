@@ -1,51 +1,45 @@
 {
-   "license" : "CC-BY-4.0 -- attribution appreciated, corrections and additions welcome via PR",
-   "guideUrl" : "https://reelpath.pages.dev/watch-order/x-men.html",
-   "slug" : "x-men",
-   "entryCount" : 13,
-   "franchise" : "X-Men",
-   "source" : "ReelPath (https://reelpath.pages.dev)",
    "entries" : [
       {
+         "chronoPosition" : 9,
          "filler" : false,
          "meta" : "2000",
-         "chronoPosition" : 9,
-         "rating" : 7,
          "position" : 1,
          "poster" : "https://image.tmdb.org/t/p/w500/bRDAc4GogyS9ci3ow7UnInOcriN.jpg",
+         "rating" : 7,
          "title" : "X-Men"
       },
       {
-         "rating" : 7,
+         "chronoPosition" : 10,
+         "filler" : false,
+         "meta" : "2003",
          "position" : 2,
          "poster" : "https://image.tmdb.org/t/p/w500/bst4alFUXCxISwdRUKSMhhkrX1M.jpg",
-         "title" : "X2",
-         "filler" : false,
-         "chronoPosition" : 10,
-         "meta" : "2003"
+         "rating" : 7,
+         "title" : "X2"
       },
       {
-         "meta" : "2006",
-         "filler" : false,
          "chronoPosition" : 11,
-         "title" : "X-Men: The Last Stand",
-         "rating" : 6.4,
+         "filler" : false,
+         "meta" : "2006",
          "position" : 3,
-         "poster" : "https://image.tmdb.org/t/p/w500/a2xicU8DpKtRizOHjQLC1JyCSRS.jpg"
+         "poster" : "https://image.tmdb.org/t/p/w500/a2xicU8DpKtRizOHjQLC1JyCSRS.jpg",
+         "rating" : 6.4,
+         "title" : "X-Men: The Last Stand"
       },
       {
-         "rating" : 6.3,
-         "poster" : "https://image.tmdb.org/t/p/w500/yj8LbTju1p7CUJg7US2unSBk33s.jpg",
-         "position" : 4,
-         "title" : "X-Men Origins: Wolverine",
          "chronoPosition" : 3,
          "filler" : false,
-         "meta" : "2009"
+         "meta" : "2009",
+         "position" : 4,
+         "poster" : "https://image.tmdb.org/t/p/w500/yj8LbTju1p7CUJg7US2unSBk33s.jpg",
+         "rating" : 6.3,
+         "title" : "X-Men Origins: Wolverine"
       },
       {
+         "chronoPosition" : 1,
          "filler" : false,
          "meta" : "2011",
-         "chronoPosition" : 1,
          "position" : 5,
          "poster" : "https://image.tmdb.org/t/p/w500/hNEokmUke0dazoBhttFN0o3L7Xv.jpg",
          "rating" : 7.3,
@@ -53,75 +47,81 @@
       },
       {
          "chronoPosition" : 12,
-         "meta" : "2013",
          "filler" : false,
-         "poster" : "https://image.tmdb.org/t/p/w500/t2wVAcoRlKvEIVSbiYDb8d0QqqS.jpg",
+         "meta" : "2013",
          "position" : 6,
+         "poster" : "https://image.tmdb.org/t/p/w500/t2wVAcoRlKvEIVSbiYDb8d0QqqS.jpg",
          "rating" : 6.4,
          "title" : "The Wolverine"
       },
       {
-         "poster" : "https://image.tmdb.org/t/p/w500/tYfijzolzgoMOtegh1Y7j2Enorg.jpg",
-         "position" : 7,
-         "rating" : 7.5,
-         "title" : "X-Men: Days of Future Past",
-         "meta" : "2014",
+         "chronoPosition" : 2,
          "filler" : false,
-         "chronoPosition" : 2
+         "meta" : "2014",
+         "position" : 7,
+         "poster" : "https://image.tmdb.org/t/p/w500/tYfijzolzgoMOtegh1Y7j2Enorg.jpg",
+         "rating" : 7.5,
+         "title" : "X-Men: Days of Future Past"
       },
       {
+         "chronoPosition" : 5,
+         "filler" : false,
+         "meta" : "2016",
          "position" : 8,
          "poster" : "https://image.tmdb.org/t/p/w500/3E53WEZJqP6aM84D8CckXx4pIHw.jpg",
          "rating" : 7.6,
-         "title" : "Deadpool",
-         "meta" : "2016",
-         "chronoPosition" : 5,
-         "filler" : false
+         "title" : "Deadpool"
       },
       {
-         "meta" : "2016",
          "chronoPosition" : 4,
          "filler" : false,
+         "meta" : "2016",
          "position" : 9,
          "poster" : "https://image.tmdb.org/t/p/w500/ikA8UhYdTGpqbatFa93nIf6noSr.jpg",
          "rating" : 6.5,
          "title" : "X-Men: Apocalypse"
       },
       {
-         "title" : "Logan",
+         "chronoPosition" : 13,
+         "filler" : false,
+         "meta" : "2017",
          "position" : 10,
          "poster" : "https://image.tmdb.org/t/p/w500/fnbjcRDYn6YviCcePDnGdyAkYsB.jpg",
          "rating" : 7.8,
-         "meta" : "2017",
-         "filler" : false,
-         "chronoPosition" : 13
+         "title" : "Logan"
       },
       {
-         "poster" : "https://image.tmdb.org/t/p/w500/to0spRl1CMDvyUbOnbb4fTk3VAd.jpg",
-         "position" : 11,
-         "rating" : 7.5,
-         "title" : "Deadpool 2",
-         "meta" : "2018",
          "chronoPosition" : 6,
-         "filler" : false
+         "filler" : false,
+         "meta" : "2018",
+         "position" : 11,
+         "poster" : "https://image.tmdb.org/t/p/w500/to0spRl1CMDvyUbOnbb4fTk3VAd.jpg",
+         "rating" : 7.5,
+         "title" : "Deadpool 2"
       },
       {
          "chronoPosition" : 8,
-         "meta" : "2019",
          "filler" : false,
-         "rating" : 6,
+         "meta" : "2019",
          "position" : 12,
          "poster" : "https://image.tmdb.org/t/p/w500/cCTJPelKGLhALq3r51A9uMonxKj.jpg",
+         "rating" : 6,
          "title" : "Dark Phoenix"
       },
       {
          "chronoPosition" : 7,
-         "meta" : "2020",
          "filler" : false,
-         "title" : "The New Mutants",
-         "poster" : "https://image.tmdb.org/t/p/w500/xiDGcXJTvu1lazFRYip6g1eLt9c.jpg",
+         "meta" : "2020",
          "position" : 13,
-         "rating" : 6.1
+         "poster" : "https://image.tmdb.org/t/p/w500/xiDGcXJTvu1lazFRYip6g1eLt9c.jpg",
+         "rating" : 6.1,
+         "title" : "The New Mutants"
       }
-   ]
+   ],
+   "entryCount" : 13,
+   "franchise" : "X-Men",
+   "guideUrl" : "https://reelpath.pages.dev/watch-order/x-men.html",
+   "license" : "CC-BY-4.0 -- attribution appreciated, corrections and additions welcome via PR",
+   "slug" : "x-men",
+   "source" : "ReelPath (https://reelpath.pages.dev)"
 }
