@@ -269,7 +269,14 @@
      Fate use the binary hide-toggle pattern, MCU and Wan Universe use the
      release/chronological order-switch — so this rewires that control's
      behaviour on every tab switch rather than reusing the generic
-     single-page mount functions. */
+     single-page mount functions.
+
+     Binge Math Box: EVERY franchise here renders it (renderBinge() is
+     called from all four branches of activatePanel below) -- this is the
+     established convention, not optional polish. Adding a 5th franchise
+     to this demo means adding data-eps (24min/ep, anime) or data-minutes
+     (real runtime, live-action) to its nodes too, same as the other four,
+     so the box isn't showing a stale or missing total for it. */
   function mountFranchiseDemo() {
     var section = document.getElementById("signatureDemo");
     if (!section) return;
@@ -414,17 +421,19 @@
         toggleRow.style.display = "";
         orderSwitch.style.display = "none";
         modePills.style.display = "none";
-        bingeBox.style.display = "none";
         toggleLabel.textContent = cfg.label;
         toggleEl.classList.remove("on");
         toggleEl.setAttribute("aria-checked", "false");
         var hideNodes = panel.querySelectorAll(".node." + cfg.hideClass);
+        var allToggleNodes = panel.querySelectorAll(".node");
         hideNodes.forEach(function (n) { n.classList.remove("hidden"); });
+        renderBinge(allToggleNodes, "minutes", 1);
         var handler = function () {
           var on = !toggleEl.classList.contains("on");
           toggleEl.classList.toggle("on", on);
           toggleEl.setAttribute("aria-checked", on);
           hideNodes.forEach(function (n) { n.classList.toggle("hidden", on); });
+          renderBinge(allToggleNodes, "minutes", 1);
         };
         toggleEl.onclick = handler;
         toggleEl.onkeydown = function (e) {
@@ -434,7 +443,6 @@
         toggleRow.style.display = "none";
         orderSwitch.style.display = "";
         modePills.style.display = "none";
-        bingeBox.style.display = "none";
         var buttons = orderSwitch.querySelectorAll("[data-order-btn]");
         var nodes = panel.querySelectorAll(".node");
         function apply(order) {
@@ -448,6 +456,7 @@
             if (dot && pos) dot.textContent = pos;
             if (metaEl && meta) metaEl.textContent = meta;
           });
+          renderBinge(nodes, "minutes", 1);
         }
         buttons.forEach(function (b) {
           b.onclick = function () { apply(b.getAttribute("data-order-btn")); };
