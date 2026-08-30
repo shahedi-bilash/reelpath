@@ -230,9 +230,18 @@ h1,h2,h3{font-family:'Bebas Neue',sans-serif;text-transform:uppercase;}
   color:#f5c144;font-size:11px;font-weight:700;padding:3px 8px;backdrop-filter:blur(4px);
   font-family:'Inter',sans-serif;letter-spacing:0;
 }
-.rating-badge::before{content:"★";font-size:9px;}
+/* Source label -- always-visible text, not hover-revealed (this is a
+   mobile-first site; touch has no hover). Two stacked badges with no
+   label were indistinguishable at a glance, so every badge now prefixes
+   its number with its source. The label sits at a smaller font-size
+   than the number so it reads as a tag, not a second number, and it's
+   sized to fit inside the existing badge height (line-height comes from
+   flex align-items:center + the badge's own padding, not from ::before,
+   so adding this text never grows the badge taller -- only wider). */
+.rating-badge::before{content:"TMDB";font-size:7.5px;font-weight:800;letter-spacing:0.02em;opacity:0.85;margin-right:1px;}
+.rating-badge--imdb::before{content:"IMDb";}
 .rating-badge--sm{font-size:9.5px;padding:2px 6px;gap:2px;}
-.rating-badge--sm::before{font-size:8px;}
+.rating-badge--sm::before{font-size:6.5px;}
 .card .rating-badge{top:14px;right:14px;}
 .node-poster-wrap .rating-badge{top:6px;left:6px;}
 .rank-plate .rating-badge{top:4px;left:4px;}
