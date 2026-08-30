@@ -5,6 +5,14 @@
 (function () {
   "use strict";
 
+  /* ---- Amazon Associates tag ----
+     Set this ONE value once an Associate ID exists and every "Where to
+     watch" button site-wide activates automatically -- no other file
+     needs touching, no rebuild/script re-run needed, since this runs
+     client-side on every page load. Leave it empty ("") until then: the
+     buttons stay exactly as they are now (disabled, "coming soon"). */
+  var AMAZON_ASSOCIATE_TAG = "";
+
   function ready(fn) {
     if (document.readyState !== "loading") fn();
     else document.addEventListener("DOMContentLoaded", fn);
@@ -37,6 +45,32 @@
     track.querySelectorAll(".card[data-release-date]").forEach(function (card) {
       var d = new Date(card.getAttribute("data-release-date") + "T00:00:00");
       if (!isNaN(d) && d < today) card.style.display = "none";
+    });
+  }
+
+  /* ---- "Where to watch" buttons -> Amazon Associates links ----
+     A no-op while AMAZON_ASSOCIATE_TAG is empty. Once it's set, every
+     disabled "Where to watch" button (rank-item rows on Best Of pages,
+     entry-detail rows on watch-order pages) becomes a real Amazon
+     product-search link for that title, tagged for commission --
+     covers streaming/rental listings and physical Blu-ray/merch alike,
+     since that's what an Amazon search surfaces for a movie title. */
+  function mountAmazonLinks() {
+    if (!AMAZON_ASSOCIATE_TAG) return;
+    var buttons = document.querySelectorAll('a.btn-small[aria-disabled="true"][title*="Affiliate link"]');
+    buttons.forEach(function (btn) {
+      var container = btn.closest(".rank-item, .entry-detail");
+      if (!container) return;
+      var titleEl = container.querySelector(".rank-title, .entry-detail-title");
+      if (!titleEl) return;
+      var title = titleEl.textContent.trim();
+      if (!title) return;
+      btn.href = "https://www.amazon.com/s?k=" + encodeURIComponent(title + " movie") +
+        "&tag=" + encodeURIComponent(AMAZON_ASSOCIATE_TAG);
+      btn.target = "_blank";
+      btn.rel = "noopener sponsored";
+      btn.removeAttribute("aria-disabled");
+      btn.removeAttribute("title");
     });
   }
 
@@ -747,6 +781,7 @@
     mountFranchiseDemo();
     mountEmbedWidget();
     mountComingSoonFilter();
+    mountAmazonLinks();
     var yearEl = document.getElementById("year");
     if (yearEl) yearEl.textContent = new Date().getFullYear();
   });

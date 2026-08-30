@@ -1,0 +1,9 @@
+# ads.txt -- Authorized Digital Sellers
+# https://iabtechlab.com/ads-txt/
+#
+# Placeholder, ready for AdSense approval. Once a Google AdSense
+# publisher ID exists (the "pub-XXXXXXXXXXXXXXXX" from the AdSense
+# dashboard), uncomment the line below and replace the ID -- that's the
+# only change this file ever needs.
+#
+# google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0

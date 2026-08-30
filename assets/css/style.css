@@ -541,6 +541,18 @@ h1,h2,h3{font-family:'Bebas Neue',sans-serif;text-transform:uppercase;}
   font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--violet);
   border:1px solid var(--line-strong);padding:3px 9px;border-radius:999px;
 }
+/* Ratings, next to the title instead of stamped on the poster -- on the
+   compact 78x78 rank-plate thumbnail two stacked overlay badges covered
+   most of the image. Same .rating-badge spans (data-tmdb-id etc. all
+   intact, so the daily refresh scripts still find and update them --
+   only their container and visual treatment changed here), reset from
+   an absolute pill to plain inline text. */
+.rank-ratings{display:flex;align-items:center;gap:10px;margin-bottom:4px;}
+.rank-ratings .rating-badge{
+  position:static;background:none;border:none;padding:0;backdrop-filter:none;
+  color:var(--text-dim);font-weight:600;font-size:11px;
+}
+.rank-ratings .rating-badge::before{opacity:0.65;}
 .rank-pitch{font-size:13.5px;color:var(--text-dim);max-width:640px;}
 /* Quoted-dialogue variant of .rank-pitch, used on the "Most quotable lines"
    list page -- the line itself, styled larger/italic, above the one-line
