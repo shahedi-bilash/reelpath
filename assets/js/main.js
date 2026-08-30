@@ -33,6 +33,119 @@
     });
   }
 
+  /* ---- "Coming Soon" defensive date filter ----
+     The rail is rebuilt daily by scripts/rebuild-coming-soon.ps1 via a
+     GitHub Actions cron job, but the site is static: whatever was
+     generated at the last scheduled run stays live until the next one.
+     This is a client-side backstop for that gap -- if a visitor's actual
+     "today" is past a card's data-release-date (the rebuild missed a day,
+     ran late, etc), hide that card entirely rather than show a
+     since-released title as still "coming soon". */
+  function mountComingSoonFilter() {
+    var track = document.getElementById("upcomingTrack");
+    if (!track) return;
+    var today = new Date(); today.setHours(0, 0, 0, 0);
+    track.querySelectorAll(".card[data-release-date]").forEach(function (card) {
+      var d = new Date(card.getAttribute("data-release-date") + "T00:00:00");
+      if (!isNaN(d) && d < today) card.style.display = "none";
+    });
+  }
+
+  /* ---- Site-wide search ----
+     Lazy-fetches /assets/search-index.json (built by
+     scripts/build-search-index.ps1) the first time the search box opens,
+     caches it in memory for the rest of the page's life, and does a
+     plain case-insensitive substring match against every entry's title
+     on each keystroke -- no backend, no build-time query awareness
+     needed. Root-relative fetch path so it resolves the same from any
+     page depth (/watch-order/one-piece/filler-list.html included). */
+  function mountSiteSearch() {
+    var btn = document.getElementById("searchToggle");
+    var box = document.getElementById("searchBox");
+    var input = document.getElementById("searchInput");
+    var results = document.getElementById("searchResults");
+    if (!btn || !box || !input || !results) return;
+
+    var index = null;
+    var indexPromise = null;
+    function loadIndex() {
+      if (indexPromise) return indexPromise;
+      indexPromise = fetch("/assets/search-index.json")
+        .then(function (r) { return r.json(); })
+        .then(function (data) { index = data.entries || []; return index; })
+        .catch(function () { index = []; return index; });
+      return indexPromise;
+    }
+
+    function render(query) {
+      if (!query) {
+        results.hidden = true;
+        results.innerHTML = "";
+        return;
+      }
+      var q = query.toLowerCase();
+      var matches = (index || []).filter(function (e) {
+        return e.title.toLowerCase().indexOf(q) !== -1;
+      }).slice(0, 8);
+
+      results.innerHTML = "";
+      results.hidden = false;
+      if (matches.length === 0) {
+        var empty = document.createElement("div");
+        empty.className = "search-empty";
+        empty.textContent = "No matches for \"" + query + "\"";
+        results.appendChild(empty);
+        return;
+      }
+      matches.forEach(function (m) {
+        var a = document.createElement("a");
+        a.className = "search-result";
+        a.href = m.url;
+        var img = document.createElement("img");
+        img.src = m.poster || "";
+        img.alt = "";
+        img.loading = "lazy";
+        var body = document.createElement("div");
+        body.className = "search-result-body";
+        var title = document.createElement("div");
+        title.className = "search-result-title";
+        title.textContent = m.title;
+        var type = document.createElement("div");
+        type.className = "search-result-type";
+        type.textContent = m.type;
+        body.appendChild(title);
+        body.appendChild(type);
+        a.appendChild(img);
+        a.appendChild(body);
+        results.appendChild(a);
+      });
+    }
+
+    function openBox() {
+      box.hidden = false;
+      btn.setAttribute("aria-expanded", "true");
+      loadIndex().then(function () {
+        if (input.value) render(input.value);
+      });
+      setTimeout(function () { input.focus(); }, 10);
+    }
+    function closeBox() {
+      box.hidden = true;
+      btn.setAttribute("aria-expanded", "false");
+    }
+
+    btn.addEventListener("click", function () {
+      if (box.hidden) openBox(); else closeBox();
+    });
+    input.addEventListener("input", function () { render(input.value); });
+    input.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") { closeBox(); btn.focus(); }
+    });
+    document.addEventListener("click", function (e) {
+      if (!box.hidden && !box.contains(e.target) && e.target !== btn) closeBox();
+    });
+  }
+
   /* ---- Mobile nav toggle ---- */
   function mountNavToggle() {
     var btn = document.querySelector(".nav-toggle");
@@ -504,6 +617,7 @@
 
   ready(function () {
     mountThemeToggle();
+    mountSiteSearch();
     mountNavToggle();
     mountNavActive();
     mountCardTilt();
@@ -515,6 +629,7 @@
     mountScrollArrows();
     mountFranchiseDemo();
     mountEmbedWidget();
+    mountComingSoonFilter();
     var yearEl = document.getElementById("year");
     if (yearEl) yearEl.textContent = new Date().getFullYear();
   });

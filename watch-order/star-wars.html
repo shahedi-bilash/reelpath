@@ -51,6 +51,13 @@
 <header class="nav">
   <div class="nav-inner">
     <a class="logo" href="../index.html"><img src="../assets/icons/logo.png" alt="ReelPath logo" width="40" height="40">Reel<span>Path</span></a>
+    <div class="search-widget">
+      <button class="search-toggle" id="searchToggle" type="button" aria-label="Search" aria-expanded="false" aria-controls="searchBox">&#128269;</button>
+      <div class="search-box" id="searchBox" hidden>
+        <input type="text" id="searchInput" placeholder="Search titles, franchises, lists..." autocomplete="off">
+        <div class="search-results" id="searchResults" hidden></div>
+      </div>
+    </div>
     <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle light/dark theme" aria-pressed="false"><span class="theme-toggle-thumb"></span></button>
     <button class="nav-toggle" aria-expanded="false" aria-controls="navLinks" aria-label="Menu">☰</button>
     <nav class="nav-links" id="navLinks">
