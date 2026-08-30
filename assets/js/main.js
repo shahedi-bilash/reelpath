@@ -41,13 +41,21 @@
   }
 
   /* ---- Site-wide search ----
-     Lazy-fetches /assets/search-index.json (built by
-     scripts/build-search-index.ps1) the first time the search box opens,
-     caches it in memory for the rest of the page's life, and does a
-     plain case-insensitive substring match against every entry's title
-     on each keystroke -- no backend, no build-time query awareness
-     needed. Root-relative fetch path so it resolves the same from any
-     page depth (/watch-order/one-piece/filler-list.html included). */
+     Primary search is live: every keystroke (debounced 300ms) calls
+     /search?q=... , a Cloudflare Pages Function that proxies TMDB's
+     /search/multi server-side (see /functions/search.js) so the TMDB
+     token never reaches the browser. That's what makes "any real movie
+     or show" searchable instead of only what's been hand-curated here.
+
+     assets/search-index.json (built by scripts/build-search-index.pl)
+     is still fetched once and kept in memory, but now for a smaller
+     job: (a) instant local suggestions while the live call is in
+     flight, and (b) telling us which TMDB results are titles we've
+     actually curated a page for, so those get badged "Watch Order
+     Guide" / "In our Best Of list" / "In our Lists" and link straight
+     there. A TMDB result with no curated match links out to its own
+     TMDB page instead, badged "Guide coming soon" -- an honest label
+     on a real, working link, never a fake or broken one. */
   function mountSiteSearch() {
     var btn = document.getElementById("searchToggle");
     var box = document.getElementById("searchBox");
@@ -66,55 +74,175 @@
       return indexPromise;
     }
 
-    function render(query) {
+    function normTitle(t) {
+      return (t || "").toLowerCase().trim().replace(/[^a-z0-9]+/g, " ").trim();
+    }
+
+    function localMatches(query) {
+      var q = query.toLowerCase();
+      return (index || []).filter(function (e) {
+        if (e.title.toLowerCase().indexOf(q) !== -1) return true;
+        if (e.aliases) {
+          for (var i = 0; i < e.aliases.length; i++) {
+            if (e.aliases[i].toLowerCase().indexOf(q) !== -1) return true;
+          }
+        }
+        return false;
+      });
+    }
+
+    function localExact(title) {
+      var norm = normTitle(title);
+      var list = index || [];
+      for (var i = 0; i < list.length; i++) {
+        if (normTitle(list[i].title) === norm) return list[i];
+      }
+      return null;
+    }
+
+    function badgeFor(type) {
+      if (type === "Franchise guide" || type === "Watch order pick") return "Watch Order Guide";
+      if (type === "Genre pick") return "In our Best Of list";
+      if (type === "List entry") return "In our Lists";
+      return type;
+    }
+
+    function makeResultRow(opts) {
+      var a = document.createElement("a");
+      a.className = "search-result";
+      a.href = opts.href;
+      if (opts.external) { a.target = "_blank"; a.rel = "noopener"; }
+      var img = document.createElement("img");
+      img.src = opts.poster || "";
+      img.alt = "";
+      img.loading = "lazy";
+      var body = document.createElement("div");
+      body.className = "search-result-body";
+      var titleEl = document.createElement("div");
+      titleEl.className = "search-result-title";
+      titleEl.textContent = opts.title;
+      var subEl = document.createElement("div");
+      subEl.className = "search-result-sub";
+      subEl.textContent = opts.sub || "";
+      var badge = document.createElement("span");
+      badge.className = "search-result-badge search-result-badge--" + opts.badgeKind;
+      badge.textContent = opts.badgeText;
+      body.appendChild(titleEl);
+      body.appendChild(subEl);
+      body.appendChild(badge);
+      a.appendChild(img);
+      a.appendChild(body);
+      return a;
+    }
+
+    var debounceTimer = null;
+    var activeController = null;
+    var activeQuery = "";
+
+    function renderLoading(query) {
+      results.hidden = false;
+      results.innerHTML = "";
+      var local = localMatches(query).slice(0, 6);
+      if (local.length === 0) {
+        var hint = document.createElement("div");
+        hint.className = "search-hint";
+        hint.textContent = "Searching…";
+        results.appendChild(hint);
+        return;
+      }
+      local.forEach(function (m) {
+        results.appendChild(makeResultRow({
+          href: m.url, external: false, poster: m.poster, title: m.title,
+          badgeText: badgeFor(m.type), badgeKind: "ours", sub: m.type
+        }));
+      });
+    }
+
+    function renderFinal(query, tmdbResults, tmdbError) {
+      if (query !== activeQuery) return; // a newer query already superseded this response
+      results.innerHTML = "";
+      var shown = {};
+      var rows = [];
+
+      localMatches(query).slice(0, 4).forEach(function (m) {
+        var norm = normTitle(m.title);
+        if (shown[norm]) return;
+        shown[norm] = true;
+        rows.push(makeResultRow({
+          href: m.url, external: false, poster: m.poster, title: m.title,
+          badgeText: badgeFor(m.type), badgeKind: "ours", sub: m.type
+        }));
+      });
+
+      (tmdbResults || []).forEach(function (t) {
+        var norm = normTitle(t.title);
+        if (shown[norm]) return;
+        shown[norm] = true;
+        var curated = localExact(t.title);
+        var sub = (t.year || "") + (t.mediaType === "tv" ? " · TV" : " · Movie") +
+          (t.rating ? " · ★ " + t.rating : "");
+        if (curated) {
+          rows.push(makeResultRow({
+            href: curated.url, external: false, poster: t.poster || curated.poster,
+            title: t.title, badgeText: badgeFor(curated.type), badgeKind: "ours", sub: sub
+          }));
+        } else {
+          rows.push(makeResultRow({
+            href: t.tmdbUrl, external: true, poster: t.poster, title: t.title,
+            badgeText: "Guide coming soon", badgeKind: "soon", sub: sub
+          }));
+        }
+      });
+
+      if (rows.length === 0) {
+        var empty = document.createElement("div");
+        empty.className = "search-empty";
+        empty.textContent = tmdbError
+          ? "No matches for \"" + query + "\" (live search unavailable)"
+          : "No matches for \"" + query + "\"";
+        results.appendChild(empty);
+        return;
+      }
+      rows.forEach(function (r) { results.appendChild(r); });
+    }
+
+    function runSearch(query) {
+      activeQuery = query;
       if (!query) {
         results.hidden = true;
         results.innerHTML = "";
         return;
       }
-      var q = query.toLowerCase();
-      var matches = (index || []).filter(function (e) {
-        return e.title.toLowerCase().indexOf(q) !== -1;
-      }).slice(0, 8);
+      renderLoading(query);
 
-      results.innerHTML = "";
-      results.hidden = false;
-      if (matches.length === 0) {
-        var empty = document.createElement("div");
-        empty.className = "search-empty";
-        empty.textContent = "No matches for \"" + query + "\"";
-        results.appendChild(empty);
-        return;
-      }
-      matches.forEach(function (m) {
-        var a = document.createElement("a");
-        a.className = "search-result";
-        a.href = m.url;
-        var img = document.createElement("img");
-        img.src = m.poster || "";
-        img.alt = "";
-        img.loading = "lazy";
-        var body = document.createElement("div");
-        body.className = "search-result-body";
-        var title = document.createElement("div");
-        title.className = "search-result-title";
-        title.textContent = m.title;
-        var type = document.createElement("div");
-        type.className = "search-result-type";
-        type.textContent = m.type;
-        body.appendChild(title);
-        body.appendChild(type);
-        a.appendChild(img);
-        a.appendChild(body);
-        results.appendChild(a);
-      });
+      if (query.length < 2) { renderFinal(query, [], false); return; }
+
+      if (activeController) activeController.abort();
+      var controller = ("AbortController" in window) ? new AbortController() : null;
+      activeController = controller;
+
+      fetch("/search?q=" + encodeURIComponent(query), controller ? { signal: controller.signal } : {})
+        .then(function (r) { if (!r.ok) throw new Error("bad status"); return r.json(); })
+        .then(function (data) { renderFinal(query, data.results || [], false); })
+        .catch(function (err) {
+          if (err && err.name === "AbortError") return;
+          renderFinal(query, [], true);
+        });
+    }
+
+    function onInput() {
+      var query = input.value.trim();
+      if (debounceTimer) clearTimeout(debounceTimer);
+      if (!query) { runSearch(""); return; }
+      debounceTimer = setTimeout(function () { runSearch(query); }, 300);
     }
 
     function openBox() {
       box.hidden = false;
       btn.setAttribute("aria-expanded", "true");
       loadIndex().then(function () {
-        if (input.value) render(input.value);
+        var query = input.value.trim();
+        if (query) runSearch(query);
       });
       setTimeout(function () { input.focus(); }, 10);
     }
@@ -126,7 +254,7 @@
     btn.addEventListener("click", function () {
       if (box.hidden) openBox(); else closeBox();
     });
-    input.addEventListener("input", function () { render(input.value); });
+    input.addEventListener("input", onInput);
     input.addEventListener("keydown", function (e) {
       if (e.key === "Escape") { closeBox(); btn.focus(); }
     });

@@ -39,6 +39,13 @@ jobs:
           TMDB_TOKEN: ${{ secrets.TMDB_TOKEN }}
         run: ./scripts/rebuild-coming-soon.ps1
 
+      - name: Rebuild search index
+        # ubuntu-latest ships Perl + JSON::PP (both core modules) --
+        # nothing to install. Picks up any franchise/list/genre content
+        # added since the last run, plus any TMDB poster changes on
+        # existing watch-order nodes above.
+        run: perl scripts/build-search-index.pl
+
       # Add further build-time scripts here the same way as more of the
       # site becomes cron-refreshable (ratings, episode counts, etc) --
       # each just needs its own step above this one.
@@ -52,5 +59,5 @@ jobs:
             exit 0
           fi
           git add -A
-          git commit -m "Auto-rebuild: refresh Coming Soon rail [skip ci]"
+          git commit -m "Auto-rebuild: refresh Coming Soon rail + search index [skip ci]"
           git push
