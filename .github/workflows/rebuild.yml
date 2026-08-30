@@ -46,9 +46,45 @@ jobs:
         # existing watch-order nodes above.
         run: perl scripts/build-search-index.pl
 
+      # ---- Rating-badge <-> TMDB id backfill (new content only) ----
+      # Extract/apply are idempotent and only touch badges that don't
+      # already carry a data-tmdb-id, so this safely runs every day but
+      # only ever does real work when a franchise guide, list, or genre
+      # page gained new entries since the last run.
+      - name: Extract rating-badge manifest (new entries only)
+        run: perl scripts/sync-rating-ids.pl --extract
+
+      - name: Resolve TMDB ids for new entries
+        shell: pwsh
+        env:
+          TMDB_TOKEN: ${{ secrets.TMDB_TOKEN }}
+        run: ./scripts/resolve-tmdb-ids.ps1
+
+      - name: Apply resolved TMDB ids
+        run: perl scripts/sync-rating-ids.pl --apply
+
+      # ---- Daily TMDB rating refresh (existing content) ----
+      - name: Refresh TMDB ratings
+        shell: pwsh
+        env:
+          TMDB_TOKEN: ${{ secrets.TMDB_TOKEN }}
+        run: ./scripts/refresh-tmdb-ratings.ps1
+
+      # ---- IMDb rating refresh (weekly-cached inside the script itself
+      # via scripts/omdb-cache.json -- safe to invoke daily) ----
+      - name: Refresh IMDb ratings (OMDb)
+        shell: pwsh
+        env:
+          TMDB_TOKEN: ${{ secrets.TMDB_TOKEN }}
+          # Set as a repo secret alongside TMDB_TOKEN: Settings -> Secrets
+          # and variables -> Actions -> New repository secret -> name it
+          # OMDB_KEY. Never hardcode it here or anywhere else in the repo.
+          OMDB_KEY: ${{ secrets.OMDB_KEY }}
+        run: ./scripts/refresh-omdb-ratings.ps1
+
       # Add further build-time scripts here the same way as more of the
-      # site becomes cron-refreshable (ratings, episode counts, etc) --
-      # each just needs its own step above this one.
+      # site becomes cron-refreshable -- each just needs its own step
+      # above this one.
 
       - name: Commit and push if changed
         run: |
@@ -59,5 +95,5 @@ jobs:
             exit 0
           fi
           git add -A
-          git commit -m "Auto-rebuild: refresh Coming Soon rail + search index [skip ci]"
+          git commit -m "Auto-rebuild: refresh Coming Soon rail, search index, TMDB/IMDb ratings [skip ci]"
           git push

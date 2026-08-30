@@ -3,3 +3,8 @@ Thumbs.db
 desktop.ini
 omdb-ratings.json
 scripts/*.json
+# Exception: the OMDb rating cache IS meant to be committed -- it's what
+# lets the daily workflow only re-query a title weekly instead of daily
+# (see scripts/refresh-omdb-ratings.ps1), which only works if the cache
+# persists in git between runs.
+!scripts/omdb-cache.json
