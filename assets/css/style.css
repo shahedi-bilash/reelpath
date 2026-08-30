@@ -21,34 +21,7 @@
   --radius:14px;
   --maxw:1180px;
 }
-/* Light theme -- opt-in only via [data-theme="light"] on <html>, set by
-   the toggle in the nav and persisted to localStorage. There is no
-   prefers-color-scheme media-query fallback here on purpose: the site
-   defaults to dark for every visitor until they explicitly choose
-   otherwise (see the inline anti-FOUC script in <head> on every page).
-   Photo/poster overlay gradients (hero, genre cards, trending-rail card
-   plates) are intentionally hardcoded rgba(0,0,0,..) rather than themed
-   variables, so they stay dark and text stays readable over images in
-   both themes -- don't route those through --bg/--text. */
-:root[data-theme="light"]{
-  --bg:#f6f5f3;
-  --bg-elev:#ffffff;
-  --bg-elev-2:#efecf7;
-  --line:#e3e0ea;
-  --line-strong:#d0ccdc;
-  --text:#18151f;
-  --text-dim:#6a6575;
-  --text-faint:#a39eb0;
-  --violet:#6a4fe0;
-  --violet-dim:#ab9af0;
-  /* Used by the node/poster hover "glow" (box-shadow:0 0 22px var(--violet-soft)).
-     On a dark bg that reads as a glow; on white it reads as a dirty smudge,
-     so in light mode this becomes a neutral, printable drop-shadow tint
-     instead of a violet one -- see the light-mode hover overrides below. */
-  --violet-soft:rgba(0,0,0,0.08);
-}
 *{box-sizing:border-box;margin:0;padding:0;}
-*{transition:background-color .25s ease,color .25s ease,border-color .25s ease;}
 html{scroll-behavior:smooth;}
 body{
   background:var(--bg);
@@ -108,12 +81,6 @@ header.nav{
   border-color:var(--violet);background:var(--violet);color:#f5f3ff;
   box-shadow:0 4px 18px rgba(124,108,245,0.4);
 }
-/* Light mode: the violet glow above reads as a muddy smudge on a white
-   surface, so it's swapped for a plain neutral drop-shadow -- same lift,
-   no color cast. The violet border/fill stays (brand consistency); only
-   the glow itself changes. */
-:root[data-theme="light"] .nav-cta:hover{box-shadow:0 4px 16px rgba(24,21,31,0.14);}
-
 @media (max-width:820px){
   .nav-toggle{display:inline-flex;align-items:center;justify-content:center;}
   .nav-links{
@@ -189,7 +156,6 @@ header.nav{
   border-radius:999px;border:none;font-size:14px;transition:transform .2s,box-shadow .2s;
 }
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(124,108,245,0.25);}
-:root[data-theme="light"] .btn-primary:hover{box-shadow:0 8px 20px rgba(24,21,31,0.12);}
 .btn-ghost{
   display:inline-block;background:transparent;color:var(--text);border:1px solid var(--line-strong);
   padding:14px 26px;border-radius:999px;font-size:14px;font-weight:600;transition:border-color .2s,color .2s;
@@ -200,7 +166,6 @@ header.nav{
   padding:9px 16px;border-radius:999px;border:none;font-size:12.5px;transition:transform .2s,box-shadow .2s;
 }
 .btn-small:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(124,108,245,0.25);}
-:root[data-theme="light"] .btn-small:hover{box-shadow:0 6px 14px rgba(24,21,31,0.12);}
 .btn-small[aria-disabled="true"]{background:var(--bg-elev-2);color:var(--text-dim);border:1px solid var(--line-strong);}
 .btn-small[aria-disabled="true"]:hover{transform:none;box-shadow:none;}
 
@@ -309,26 +274,10 @@ h1,h2,h3{font-family:'Bebas Neue',sans-serif;text-transform:uppercase;}
 }
 .toggle.on .toggle-dot{transform:translateX(20px);background:var(--violet);}
 
-/* Nav dark/light theme toggle -- same pill-switch shape as .toggle, sized
-   down slightly to sit comfortably in the header bar. "On" == light theme
-   active, matching the same on/off visual language as the filler toggle. */
-.theme-toggle{
-  width:42px;height:24px;border-radius:999px;background:var(--bg-elev-2);
-  border:1px solid var(--line-strong);position:relative;flex-shrink:0;cursor:pointer;
-  transition:background .25s;margin-right:2px;
-}
-.theme-toggle-thumb{
-  position:absolute;top:2px;left:2px;width:18px;height:18px;border-radius:50%;
-  background:var(--text-dim);transition:transform .25s,background .25s;
-  display:flex;align-items:center;justify-content:center;font-size:10px;line-height:1;
-}
-:root[data-theme="light"] .theme-toggle{background:rgba(106,79,240,0.18);border-color:var(--violet-dim);}
-:root[data-theme="light"] .theme-toggle-thumb{transform:translateX(18px);background:var(--violet);}
-
 /* Site-wide search: icon button + expanding input + live results dropdown.
-   Sits in the nav next to the theme toggle. Collapses to an icon-only
-   trigger on narrow viewports (the input takes over the header bar when
-   open) to save space, per spec. */
+   Sits in the nav corner (theme toggle was removed -- site is dark-only).
+   Collapses to an icon-only trigger on narrow viewports (the input takes
+   over the header bar when open) to save space, per spec. */
 .search-widget{position:relative;display:flex;align-items:center;}
 .search-toggle{
   width:36px;height:36px;border-radius:999px;background:transparent;border:1px solid var(--line-strong);
@@ -341,7 +290,6 @@ h1,h2,h3{font-family:'Bebas Neue',sans-serif;text-transform:uppercase;}
   background:var(--bg-elev);border:1px solid var(--line-strong);border-radius:14px;
   padding:10px;box-shadow:0 12px 32px rgba(5,6,10,0.35);z-index:300;
 }
-:root[data-theme="light"] .search-box{box-shadow:0 12px 28px rgba(24,21,31,0.14);}
 .search-box input{
   width:100%;background:var(--bg);border:1px solid var(--line);border-radius:8px;
   padding:10px 12px;font-size:14px;color:var(--text);font-family:'Inter',sans-serif;

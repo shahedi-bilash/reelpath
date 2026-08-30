@@ -10,27 +10,16 @@
     else document.addEventListener("DOMContentLoaded", fn);
   }
 
-  /* ---- Dark/light theme toggle ----
-     Default is always dark -- the inline anti-flash script in <head>
-     already applied data-theme="light" before paint if that was the
-     saved choice, so this just wires the button and keeps localStorage
-     in sync going forward. */
-  function mountThemeToggle() {
-    var btn = document.getElementById("themeToggle");
-    if (!btn) return;
-    function isLight() { return document.documentElement.getAttribute("data-theme") === "light"; }
-    function reflect() { btn.setAttribute("aria-pressed", isLight() ? "true" : "false"); }
-    reflect();
-    btn.addEventListener("click", function () {
-      var next = isLight() ? "dark" : "light";
-      if (next === "light") {
-        document.documentElement.setAttribute("data-theme", "light");
-      } else {
-        document.documentElement.removeAttribute("data-theme");
-      }
-      try { localStorage.setItem("reelpath-theme", next); } catch (e) {}
-      reflect();
-    });
+  /* ---- Dark/light theme toggle: removed ----
+     The site is dark-only now -- no user-facing toggle, no data-theme
+     attribute ever gets set. The one-time cleanup below clears any
+     "reelpath-theme":"light" value a visitor saved back when the toggle
+     existed, so nobody stays stuck on a preference the UI no longer
+     offers a way to change. Safe to delete this block entirely once
+     enough time has passed that no returning visitor could still have
+     the old key set. */
+  function clearLegacyThemePreference() {
+    try { localStorage.removeItem("reelpath-theme"); } catch (e) {}
   }
 
   /* ---- "Coming Soon" defensive date filter ----
@@ -616,7 +605,7 @@
   }
 
   ready(function () {
-    mountThemeToggle();
+    clearLegacyThemePreference();
     mountSiteSearch();
     mountNavToggle();
     mountNavActive();
