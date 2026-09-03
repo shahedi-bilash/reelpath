@@ -11,7 +11,7 @@
      needs touching, no rebuild/script re-run needed, since this runs
      client-side on every page load. Leave it empty ("") until then: the
      buttons stay exactly as they are now (disabled, "coming soon"). */
-  var AMAZON_ASSOCIATE_TAG = "";
+  var AMAZON_ASSOCIATE_TAG = "reelpath22-20";
 
   function ready(fn) {
     if (document.readyState !== "loading") fn();
